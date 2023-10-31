@@ -17,7 +17,7 @@ class _addpostFormState extends State<addpostForm> {
       body: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          domain(),
+          addPost(),
         ],
       ),
     );

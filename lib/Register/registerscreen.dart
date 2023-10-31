@@ -9,6 +9,11 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  String regpasserrorTextval = '';
+  String regunameerrorTextval = '';
+  String regemailTextval = '';
+  String regrollnoval = '';
+  String regcpasserrorTextval = '';
   TextEditingController registernoController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -46,32 +51,146 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             )),
                       ])),
               const SizedBox(height: 20),
-              SocialButton(
-                controller: registernoController,
-                hintText: "Register Number",
-                obscureText: false,
-                icons: Icon(Icons.numbers),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 80),
+                child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.contains(' ')) {
+                          regrollnoval = "Dont use blank spaces";
+                        } else {
+                          regrollnoval = "";
+                        }
+                      });
+                    },
+                    controller: usernameController,
+                    decoration: InputDecoration(
+                      errorText: regrollnoval.isEmpty ? null : regrollnoval,
+                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.blue,
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                          width: 4,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      labelText: 'Username',
+                    )),
               ),
-              const SizedBox(height: 20),
-              SocialButton(
-                controller: usernameController,
-                hintText: "Username",
-                obscureText: false,
-                icons: Icon(Icons.account_circle_outlined),
-              ),
-              const SizedBox(height: 20),
-              SocialButton(
-                controller: emailController,
-                hintText: "name@domainname",
-                obscureText: false,
-                icons: Icon(Icons.email_outlined),
-              ),
+              // SocialButton(
+              //   controller: registernoController,
+              //   hintText: "Register Number",
+              //   obscureText: false,
+              //   icons: Icon(Icons.numbers),
+              // ),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.contains(' ')) {
+                          regunameerrorTextval = "Dont use blank spaces";
+                        } else {
+                          regunameerrorTextval = "";
+                        }
+                      });
+                    },
+                    controller: usernameController,
+                    decoration: InputDecoration(
+                      errorText: regunameerrorTextval.isEmpty
+                          ? null
+                          : regunameerrorTextval,
+                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.blue,
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                          width: 4,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      labelText: 'Username',
+                    )),
+              ),
+              // SocialButton(
+              //   controller: usernameController,
+              //   hintText: "Username",
+              //   obscureText: false,
+              //   icons: Icon(Icons.account_circle_outlined),
+              // ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 80),
+                child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.contains(' ')) {
+                          regemailTextval = "Dont use blank spaces";
+                        } else {
+                          regemailTextval = "";
+                        }
+                      });
+                    },
+                    controller: usernameController,
+                    decoration: InputDecoration(
+                      errorText:
+                          regemailTextval.isEmpty ? null : regemailTextval,
+                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.blue,
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                          width: 4,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      labelText: 'Username',
+                    )),
+              ),
+              // SocialButton(
+              //   controller: emailController,
+              //   hintText: "name@domainname",
+              //   obscureText: false,
+              //   icons: Icon(Icons.email_outlined),
+              // ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 80),
+                child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.contains(' ')) {
+                          regpasserrorTextval = "Dont use blank spaces";
+                        } else {
+                          regpasserrorTextval = "";
+                        }
+                      });
+                    },
                     controller: passwordController,
                     decoration: InputDecoration(
+                      errorText: regpasserrorTextval.isEmpty
+                          ? null
+                          : regpasserrorTextval,
                       prefixIcon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(

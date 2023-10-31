@@ -7,6 +7,7 @@ import 'package:ap/Pages/Home/home.dart';
 import 'package:ap/Pages/Profile/account.dart';
 // import 'package:ap/Pages/Profile/profile.dart';
 import 'package:ap/Pages/Search/search.dart';
+import 'package:ap/Pages/Home/comments.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,8 +27,8 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _children = [
     Home(),
     Search(Username: "Gokulramana", Usertype: "Alumni"),
-    domain(),
-    addpostForm(),
+    comments(),
+    addPost(),
     Account(),
   ];
   @override

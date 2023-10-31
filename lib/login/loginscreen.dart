@@ -4,6 +4,7 @@ import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/login/login_button.dart';
 // import 'package:ap/Home/pages/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:ap/component/validation.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -14,6 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool isPasswordObscured = true;
+  String passerrorTextval = "";
+  String unameerrorTextval = '';
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +48,57 @@ class _LoginScreenState extends State<LoginScreen> {
                             )),
                       ])),
               const SizedBox(height: 50),
-              SocialButton(
-                controller: usernameController,
-                hintText: "Username",
-                obscureText: false,
-                icons: Icon(Icons.account_circle_outlined),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 80),
+                child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.contains(' ')) {
+                          unameerrorTextval = "Dont use blank spaces";
+                        } else {
+                          unameerrorTextval = "";
+                        }
+                      });
+                    },
+                    controller: usernameController,
+                    decoration: InputDecoration(
+                      errorText:
+                          unameerrorTextval.isEmpty ? null : unameerrorTextval,
+                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.blue,
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                          width: 4,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      labelText: 'Username',
+                    )),
               ),
               const SizedBox(height: 50),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.contains(' ')) {
+                          passerrorTextval = "Dont use blank spaces";
+                        } else {
+                          passerrorTextval = "";
+                        }
+                      });
+                    },
                     controller: passwordController,
                     decoration: InputDecoration(
+                      errorText:
+                          passerrorTextval.isEmpty ? null : passerrorTextval,
                       prefixIcon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -86,8 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     )),
               ),
               const SizedBox(height: 15),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.0),
+              GestureDetector(
                 child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   Text('ForgotPassword?',
                       style: TextStyle(
@@ -95,6 +136,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.blue,
                           fontSize: 15)),
                 ]),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => RegisterScreen()));
+                },
               ),
               const SizedBox(height: 25),
               myButton(),
@@ -130,14 +175,15 @@ class _LoginScreenState extends State<LoginScreen> {
           margin: const EdgeInsets.symmetric(horizontal: 90),
           decoration: const BoxDecoration(color: Colors.blue),
           child: const Center(
+              child: const Center(
             child: Text(
-              "Sign in",
+              "Sign In",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 25),
             ),
-          )),
+          ))),
       onTap: () {
         var userName = usernameController.text;
         var password = passwordController.text;
