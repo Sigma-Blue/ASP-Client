@@ -35,15 +35,15 @@ class _addPostState extends State<addPost> {
             children: [
               TextFormField(
                 minLines: 1,
-                maxLines: 100,
-                decoration: InputDecoration(
-                    labelText: 'Caption', border: OutlineInputBorder()),
-              ),
-              TextFormField(
-                minLines: 1,
                 maxLines: 30,
                 decoration: InputDecoration(
                     labelText: 'Title', border: OutlineInputBorder()),
+              ),
+              TextFormField(
+                minLines: 1,
+                maxLines: 100,
+                decoration: InputDecoration(
+                    labelText: 'Caption', border: OutlineInputBorder()),
               ),
               const SizedBox(height: 20),
               GestureDetector(
@@ -59,6 +59,8 @@ class _addPostState extends State<addPost> {
                       builder: (BuildContext context) => addImage()));
                 },
               ),
+              const SizedBox(height: 20),
+              domain(),
             ],
           )),
     );

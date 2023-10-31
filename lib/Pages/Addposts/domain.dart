@@ -30,6 +30,7 @@ class _domainState extends State<domain> {
                         });
                       }),
                   SizedBox(height: 10),
+                  Text("Internship")
                 ],
               ),
               Row(
@@ -43,6 +44,7 @@ class _domainState extends State<domain> {
                         });
                       }),
                   SizedBox(height: 10),
+                  Text("Job")
                 ],
               ),
               Row(
@@ -56,6 +58,7 @@ class _domainState extends State<domain> {
                         });
                       }),
                   SizedBox(height: 10),
+                  Text("Research")
                 ],
               ),
               Row(
@@ -69,6 +72,7 @@ class _domainState extends State<domain> {
                         });
                       }),
                   SizedBox(height: 10),
+                  Text("Projects")
                 ],
               ),
             ],

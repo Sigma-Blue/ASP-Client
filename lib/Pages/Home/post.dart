@@ -1,3 +1,4 @@
+import 'package:ap/Pages/Home/popup.dart';
 import 'package:flutter/material.dart';
 
 class UserPosts extends StatelessWidget {
@@ -18,13 +19,7 @@ class UserPosts extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
-                    Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey[300],
-                        )),
+                    Image(image: AssetImage('coverpicture.png')),
                     const SizedBox(
                       width: 10,
                     ),
@@ -49,7 +44,7 @@ class UserPosts extends StatelessWidget {
                   Icon(Icons.favorite),
                   Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 13.0)),
-                  Icon(Icons.chat_bubble_outline),
+                  commentpopup(),
                 ],
               ),
               Icon(Icons.bookmark)

@@ -44,41 +44,33 @@ class _addImageState extends State<addImage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-          body: Column(
+        child: Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 13.0, top: 30),
-                child: Icon(Icons.image),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 0.0, top: 30),
-                child: Container(
-                  child: isLoading
-                      ? CircularProgressIndicator()
-                      : TextButton(
-                          onPressed: () {
-                            pickFile();
-                          },
-                          child: Text(
-                            'Pick File',
-                            style: TextStyle(fontSize: 24),
-                          )),
-                ),
-              ),
-              if (pickedfile != null)
-                SizedBox(
-                  height: 300,
-                  width: 400,
-                  child: Image.file(fileToDisplay!),
-                )
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 0.0, top: 30),
+            child: Container(
+              child: isLoading
+                  ? CircularProgressIndicator()
+                  : TextButton(
+                      onPressed: () {
+                        pickFile();
+                      },
+                      child: Text(
+                        'Pick File',
+                        style: TextStyle(fontSize: 24),
+                      )),
+            ),
           ),
+          if (pickedfile != null)
+            SizedBox(
+              height: 300,
+              width: 400,
+              child: Image.file(fileToDisplay!),
+            )
         ],
-      )),
-    );
+      ),
+    ));
   }
 }
