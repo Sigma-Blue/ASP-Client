@@ -5,6 +5,7 @@ import 'package:ap/Pages/Addposts/domain.dart';
 // import 'package:ap/Pages/Files/files.dart';
 import 'package:ap/Pages/Home/home.dart';
 import 'package:ap/Pages/Profile/account.dart';
+import 'package:ap/Pages/Profile/profilepage.dart';
 // import 'package:ap/Pages/Profile/profile.dart';
 import 'package:ap/Pages/Search/search.dart';
 import 'package:ap/Pages/Home/comments.dart';
@@ -29,7 +30,10 @@ class _HomePageState extends State<HomePage> {
     Search(Username: "Gokulramana", Usertype: "Alumni"),
     comments(),
     addPost(),
-    Account(),
+    ProfilePage(
+      name: 'Monikashri',
+      Usertype: 'Student',
+    ),
   ];
   @override
   Widget build(BuildContext context) {
