@@ -7,7 +7,8 @@ class UserPosts extends StatelessWidget {
   final String likes;
 
   UserPosts({required this.name, required this.caption, required this.likes});
-
+  bool like = false;
+  bool saved = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +20,6 @@ class UserPosts extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
-                    Image(image: AssetImage('coverpicture.png')),
                     const SizedBox(
                       width: 10,
                     ),
@@ -30,10 +30,11 @@ class UserPosts extends StatelessWidget {
             // Profile Photo
 
             ),
-        Container(
-          height: 300,
-          color: Colors.grey[300],
+        Padding(
+          padding: EdgeInsets.all(0),
+          child: Image.asset("assets/images/coverpicture.png"),
         ),
+
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -41,13 +42,16 @@ class UserPosts extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.favorite),
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.thumb_up_alt_outlined)),
                   Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 13.0)),
                   commentpopup(),
                 ],
               ),
-              Icon(Icons.bookmark)
+              IconButton(
+                  onPressed: () {}, icon: Icon(Icons.bookmark_add_outlined)),
             ],
           ),
         ),

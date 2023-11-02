@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   file_picker: ^6.0.0
   comment_box: ^0.0.18
+  favorite_button: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -54,7 +55,11 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-flutter:
+flutter: 
+  assets:
+   - assets/images/coverpicture.png
+   - assets/images/profilepicture.jpg
+ 
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -91,6 +96,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-assets:
- -assets/assets/coverpicture.png
- 

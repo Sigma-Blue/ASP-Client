@@ -1,3 +1,4 @@
+import 'package:ap/Pages/Home/homepost.dart';
 import 'package:ap/Pages/Home/post.dart';
 import 'package:flutter/material.dart';
 
@@ -28,10 +29,8 @@ class Home extends StatelessWidget {
               child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return UserPosts(
-                        name: 'Gokul',
-                        caption: "First post",
-                        likes: '245 Likes');
+                    return Userpost(
+                        name: 'Gokul', caption: "First post", likes: 245);
                   }))
         ],
       ),
