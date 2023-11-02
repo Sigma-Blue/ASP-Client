@@ -1,5 +1,5 @@
-import 'package:ap/Pages/Addposts/addImage.dart';
-import 'package:ap/Pages/Home/comments.dart';
+// import 'package:ap/Pages/Addposts/addImage.dart';
+// import 'package:ap/Pages/Home/comments.dart';
 import 'package:flutter/material.dart';
 
 class commentpopup extends StatefulWidget {

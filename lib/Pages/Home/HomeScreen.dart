@@ -1,10 +1,10 @@
-import 'package:ap/Pages/Addposts/addImage.dart';
+// import 'package:ap/Pages/Addposts/addImage.dart';
 import 'package:ap/Pages/Addposts/addpost.dart';
-import 'package:ap/Pages/Addposts/addpostform.dart';
-import 'package:ap/Pages/Addposts/domain.dart';
+// import 'package:ap/Pages/Addposts/addpostform.dart';
+// import 'package:ap/Pages/Addposts/domain.dart';
 // import 'package:ap/Pages/Files/files.dart';
 import 'package:ap/Pages/Home/home.dart';
-import 'package:ap/Pages/Profile/account.dart';
+// import 'package:ap/Pages/Profile/account.dart';
 import 'package:ap/Pages/Profile/profilepage.dart';
 // import 'package:ap/Pages/Profile/profile.dart';
 import 'package:ap/Pages/Search/search.dart';

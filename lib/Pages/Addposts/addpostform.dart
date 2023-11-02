@@ -1,6 +1,6 @@
-import 'package:ap/Pages/Addposts/addImage.dart';
+// import 'package:ap/Pages/Addposts/addImage.dart';
 import 'package:ap/Pages/Addposts/addpost.dart';
-import 'package:ap/Pages/Addposts/domain.dart';
+// import 'package:ap/Pages/Addposts/domain.dart';
 import 'package:flutter/material.dart';
 
 class addpostForm extends StatefulWidget {

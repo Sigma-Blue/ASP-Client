@@ -1,4 +1,4 @@
-import 'package:ap/component/socialbutton.dart';
+// import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/Register/register_button.dart';
 import 'package:ap/login/loginscreen.dart';
 import 'package:flutter/material.dart';
