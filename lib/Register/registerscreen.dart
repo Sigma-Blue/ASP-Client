@@ -19,14 +19,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmpassController = TextEditingController();
-  bool isPasswordObscured = true;
+  bool isPasswordObscured = false;
+  bool isConfirmPasswordObscured = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      appBar: AppBar(
+        elevation: 0,
+        title: const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "ASP",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                children: [Icon(Icons.info_rounded)],
+              )
+            ]),
+      ),
+      body: Container(
         child: Center(
-          child: Column(
+          child: Container(
+              child: SingleChildScrollView(
+                  child: Column(
             children: [
               const SizedBox(height: 100),
               const Padding(
@@ -119,7 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.black,
-                          width: 4,
+                          width: 1,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -160,7 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.black,
-                          width: 4,
+                          width: 1,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -177,53 +195,57 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: TextFormField(
-                    onChanged: (value) {
-                      setState(() {
-                        if (value.contains(' ')) {
-                          regpasserrorTextval = "Dont use blank spaces";
-                        } else {
-                          regpasserrorTextval = "";
-                        }
-                      });
-                    },
-                    controller: passwordController,
-                    decoration: InputDecoration(
-                      errorText: regpasserrorTextval.isEmpty
-                          ? null
-                          : regpasserrorTextval,
-                      prefixIcon: Icon(Icons.lock),
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.blue,
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
+                  onChanged: (value) {
+                    setState(() {
+                      if (value.contains(' ')) {
+                        regpasserrorTextval = "Dont use blank spaces";
+                      } else {
+                        regpasserrorTextval = "";
+                      }
+                    });
+                  },
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    errorText: regpasserrorTextval.isEmpty
+                        ? null
+                        : regpasserrorTextval,
+                    prefixIcon: Icon(Icons.lock),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
+                        width: 3,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                          width: 4,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.black,
+                        width: 1,
                       ),
-                      labelText: 'Password',
-                      suffixIcon: IconButton(
-                        icon: Icon(isPasswordObscured
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                        onPressed: () {
-                          setState(() {
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    labelText: 'Password',
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(
+                          () {
                             isPasswordObscured = !isPasswordObscured;
-                          });
-                        },
-                      ),
-                    )),
+                          },
+                        );
+                      },
+                      icon: Icon(isPasswordObscured
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                    ),
+                  ),
+                  obscureText: isPasswordObscured,
+                ),
               ),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: TextFormField(
-                    controller: passwordController,
+                    controller: confirmpassController,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
                       border: OutlineInputBorder(
@@ -242,16 +264,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       labelText: 'ConfirmPassword',
                       suffixIcon: IconButton(
-                        icon: Icon(isPasswordObscured
+                        onPressed: () {
+                          setState(
+                            () {
+                              isConfirmPasswordObscured =
+                                  !isConfirmPasswordObscured;
+                            },
+                          );
+                        },
+                        icon: Icon(isConfirmPasswordObscured
                             ? Icons.visibility
                             : Icons.visibility_off),
-                        onPressed: () {
-                          setState(() {
-                            isPasswordObscured = !isPasswordObscured;
-                          });
-                        },
                       ),
-                    )),
+                    ),
+                    obscureText: isConfirmPasswordObscured),
               ),
               const SizedBox(height: 25),
               mybutton(),
@@ -274,7 +300,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 },
               )
             ],
-          ),
+          ))),
         ),
       ),
     );
