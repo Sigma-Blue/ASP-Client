@@ -125,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget buildCoverImage() => Container(
         child: Image.asset(
-          'assets/images/coverpicture.png',
+          'assets/images/profilepicture.jpg',
           width: double.infinity,
           height: coverHeight,
           fit: BoxFit.cover,
@@ -134,7 +134,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget buildProfileImage() => CircleAvatar(
         radius: profileHeight / 2,
         backgroundImage: AssetImage(
-          'assets/images/profilepicture.jpg',
+          'assets/images/coverpicture.png',
         ),
       );
   Widget buildSocialIcon(IconData icon) => CircleAvatar(

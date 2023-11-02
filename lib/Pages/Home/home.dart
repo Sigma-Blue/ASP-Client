@@ -19,7 +19,7 @@ class Home extends StatelessWidget {
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               Row(
-                children: [Icon(Icons.menu)],
+                children: [Icon(Icons.notifications_active)],
               )
             ]),
       ),
