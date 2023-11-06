@@ -2,7 +2,10 @@ import 'package:ap/login/loginscreen.dart';
 import 'package:flutter/material.dart';
 
 class Mybutton extends StatelessWidget {
-  const Mybutton({Key? key}) : super(key: key);
+  final String buttonname;
+  final String pagename;
+  const Mybutton({Key? key, required this.buttonname, required this.pagename})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -10,9 +13,9 @@ class Mybutton extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.symmetric(horizontal: 50),
             decoration: const BoxDecoration(color: Colors.blue),
-            child: const Center(
+            child: Center(
               child: Text(
-                "Sign Up",
+                buttonname,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
