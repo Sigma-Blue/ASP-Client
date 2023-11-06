@@ -1,7 +1,11 @@
+import 'package:ap/Register/otpscreen.dart';
 import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/Register/register_button.dart';
 import 'package:ap/login/loginscreen.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:email_validator_flutter/email_validator_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -21,6 +25,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController confirmpassController = TextEditingController();
   bool isPasswordObscured = false;
   bool isConfirmPasswordObscured = false;
+  bool isSuccess = true;
+  bool isEmail = true;
+  // bool validateEmail() {
+  //   isEmail = EmailValidator.validate(emailController.text.trim());
+  //   if (isEmail) {
+  //     return true;
+  //   } else {
+  //     ;
+  //     return false;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: SingleChildScrollView(
                   child: Column(
             children: [
-              const SizedBox(height: 100),
+              const SizedBox(height: 0),
               const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -75,27 +90,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onChanged: (value) {
                       setState(() {
                         if (value.contains(' ')) {
-                          regrollnoval = "Dont use blank spaces";
+                          regunameerrorTextval = "Dont use blank spaces";
                         } else {
-                          regrollnoval = "";
+                          regunameerrorTextval = "";
                         }
                       });
                     },
                     controller: usernameController,
                     decoration: InputDecoration(
-                      errorText: regrollnoval.isEmpty ? null : regrollnoval,
+                      errorText: regunameerrorTextval.isEmpty
+                          ? null
+                          : regunameerrorTextval,
                       prefixIcon: Icon(Icons.account_circle_outlined),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
-                          width: 3,
+                          width: 1,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.black,
-                          width: 4,
+                          width: 1,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -114,19 +131,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: TextFormField(
                     onChanged: (value) {
                       setState(() {
-                        if (value.contains(' ')) {
-                          regunameerrorTextval = "Dont use blank spaces";
+                        isEmail = EmailValidator.validate(
+                            emailController.text.trim());
+                        if (isEmail) {
+                          regemailTextval = "";
                         } else {
-                          regunameerrorTextval = "";
+                          isEmail = false;
+                          regemailTextval = "enter a valid emailId";
                         }
                       });
                     },
-                    controller: usernameController,
+                    controller: emailController,
                     decoration: InputDecoration(
-                      errorText: regunameerrorTextval.isEmpty
-                          ? null
-                          : regunameerrorTextval,
-                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      errorText: isEmail ? null : regemailTextval,
+                      prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -141,7 +159,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      labelText: 'Username',
+                      labelText: 'emailId',
                     )),
               ),
               // SocialButton(
@@ -157,17 +175,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onChanged: (value) {
                       setState(() {
                         if (value.contains(' ')) {
-                          regemailTextval = "Dont use blank spaces";
+                          regrollnoval = "Dont use blank spaces";
                         } else {
-                          regemailTextval = "";
+                          regrollnoval = "";
                         }
                       });
                     },
-                    controller: usernameController,
+                    controller: registernoController,
                     decoration: InputDecoration(
-                      errorText:
-                          regemailTextval.isEmpty ? null : regemailTextval,
-                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      errorText: regrollnoval.isEmpty ? null : regrollnoval,
+                      prefixIcon: Icon(Icons.numbers),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -182,7 +199,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      labelText: 'Username',
+                      labelText: 'RegisterNumber',
                     )),
               ),
               // SocialButton(
@@ -197,8 +214,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: TextFormField(
                   onChanged: (value) {
                     setState(() {
-                      if (value.contains(' ')) {
-                        regpasserrorTextval = "Dont use blank spaces";
+                      if (isSuccess == false) {
+                        regpasserrorTextval =
+                            "Enter password with atleast a Upper \ncase,lower case,numeric and special character";
                       } else {
                         regpasserrorTextval = "";
                       }
@@ -206,14 +224,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   controller: passwordController,
                   decoration: InputDecoration(
-                    errorText: regpasserrorTextval.isEmpty
-                        ? null
-                        : regpasserrorTextval,
-                    prefixIcon: Icon(Icons.lock),
+                    errorText: isSuccess ? null : regpasserrorTextval,
+                    prefixIcon:
+                        isSuccess ? Icon(Icons.lock) : Icon(Icons.lock_open),
                     border: OutlineInputBorder(
                       borderSide: const BorderSide(
                         color: Colors.blue,
-                        width: 3,
+                        width: 1,
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -245,20 +262,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {
+                        if (passwordController.text ==
+                            confirmpassController.text) {
+                          regcpasserrorTextval = "";
+                        } else {
+                          regcpasserrorTextval = "Password does not match";
+                        }
+                      });
+                    },
                     controller: confirmpassController,
                     decoration: InputDecoration(
+                      errorText: regcpasserrorTextval.isEmpty
+                          ? null
+                          : regcpasserrorTextval,
                       prefixIcon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
-                          width: 3,
+                          width: 1,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.black,
-                          width: 4,
+                          width: 1,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -279,25 +309,53 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     obscureText: isConfirmPasswordObscured),
               ),
-              const SizedBox(height: 25),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 0),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 80.0, top: 8.0, right: 80),
+                child: FlutterPwValidator(
+                    uppercaseCharCount: 1,
+                    lowercaseCharCount: 1,
+                    numericCharCount: 1,
+                    specialCharCount: 1,
+                    width: 0,
+                    height: 0,
+                    minLength: 8,
+                    onSuccess: () {
+                      setState(() {
+                        isSuccess = true;
+                      });
+                    },
+                    onFail: () {
+                      setState(() {
+                        isSuccess = false;
+                      });
+                    },
+                    controller: passwordController),
+              ),
+              const SizedBox(height: 10),
               mybutton(),
-              const SizedBox(height: 35),
+              const SizedBox(height: 15),
               const Text(
                 "Already have an account ?",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
-              GestureDetector(
-                child: const Text(
-                  "Click here to Sign In !!!",
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: GestureDetector(
+                  child: const Text(
+                    "Click here to Sign In !!!",
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) => LoginScreen()));
+                  },
                 ),
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => LoginScreen()));
-                },
               )
             ],
           ))),
@@ -329,7 +387,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           var cpass = confirmpassController.text;
           print(registerno + username + emailId + password + cpass);
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (BuildContext context) => LoginScreen()));
+              builder: (BuildContext context) => OtpScreen()));
         });
   }
 }

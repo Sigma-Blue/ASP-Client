@@ -1,10 +1,12 @@
 import 'package:ap/Pages/Home/HomeScreen.dart';
 import 'package:ap/Register/registerscreen.dart';
+import 'package:ap/login/forgotpassword.dart';
 // import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/login/login_button.dart';
 // import 'package:ap/Home/pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:ap/component/validation.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -160,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ]),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => RegisterScreen()));
+                      builder: (BuildContext context) => ForgotPassword()));
                 },
               ),
               const SizedBox(height: 25),

@@ -1,5 +1,7 @@
 import 'package:ap/Pages/Addposts/addImage.dart';
 import 'package:ap/Pages/Addposts/addpost.dart';
+import 'package:ap/Pages/Addposts/addpostform.dart';
+import 'package:ap/Pages/Files/files.dart';
 // import 'package:ap/Pages/Addposts/addpostform.dart';
 // import 'package:ap/Pages/Addposts/domain.dart';
 // import 'package:ap/Pages/Files/files.dart';
@@ -28,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _children = [
     Home(),
     Search(Username: "Gokulramana", Usertype: "Alumni"),
-    addImage(),
+    SavedFiles(),
     addPost(),
     ProfilePage(
       name: 'Monikashri',

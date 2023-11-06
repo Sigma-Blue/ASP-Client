@@ -21,18 +21,29 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "ASP",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-              Row(
-                children: [Icon(Icons.settings)],
-              )
-            ]),
+        title:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Text(
+            "ASP",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          // actions: [
+          //   Padding(padding: EdgeInsets.only(right: 10),
+          //   child: Icon(Icons.settings)),
+          // Padding(padding: EdgeInsets.only(right: 10),
+          // child: PopupMenuButton(
+          //   itemBuilder: (context)=>{
+          //     PopupMenuItem(
+          //       child: Row(
+          //         children: [
+          //           Text('Verify Your Account')
+          //         ]
+
+          //     ))
+          //   }))
+
+          // ]
+        ]),
       ),
       body: ListView(
         padding: EdgeInsets.zero,

@@ -20,6 +20,11 @@ class UserPosts extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundImage:
+                          AssetImage('assets/images/profilepicture.jpg'),
+                    ),
                     const SizedBox(
                       width: 10,
                     ),
