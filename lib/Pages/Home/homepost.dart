@@ -101,7 +101,7 @@ class _postState extends State<Userpost> {
                       });
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 0, right: .0),
+                      padding: const EdgeInsets.only(left: 0, right: 0),
                       child: Icon(
                         (save == false)
                             ? Icons.bookmark_border

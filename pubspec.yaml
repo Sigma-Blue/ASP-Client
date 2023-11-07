@@ -46,6 +46,9 @@ dependencies:
   flutter_pw_validator: ^1.6.0
   email_validator_flutter: ^1.0.0
   email_validator: ^2.1.17
+  cloudinary_flutter: ^1.0.0
+  cloudinary_url_gen: ^1.0.0
+  
 
 
 dev_dependencies:

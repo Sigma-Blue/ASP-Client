@@ -1,6 +1,7 @@
 import 'package:ap/Pages/Home/HomeScreen.dart';
 import 'package:ap/Register/registerscreen.dart';
 import 'package:ap/login/forgotpassword.dart';
+import 'package:ap/login/forgotpasswordemail.dart';
 // import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/login/login_button.dart';
 // import 'package:ap/Home/pages/profile.dart';
@@ -161,8 +162,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ]),
                 onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => ForgotPassword()));
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Scaffold(
+                          appBar: AppBar(
+                            title: Text("Email"),
+                          ),
+                          body: ForgotPassEmail(),
+                        );
+                      });
                 },
               ),
               const SizedBox(height: 25),
