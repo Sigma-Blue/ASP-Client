@@ -1,5 +1,6 @@
 // import 'package:ap/Pages/Addposts/addImage.dart';
 import 'package:ap/Pages/Addposts/addImage.dart';
+import 'package:ap/Pages/Addposts/addlink.dart';
 import 'package:ap/Pages/Addposts/domain.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -77,6 +78,12 @@ class _addPostState extends State<addPost> {
                 decoration: const InputDecoration(
                     labelText: 'Caption', border: OutlineInputBorder()),
               ),
+              const SizedBox(height: 20),
+              DropdownMenuExample(),
+              const SizedBox(
+                height: 20,
+              ),
+              AddLink(),
               const SizedBox(height: 0),
               Padding(
                 padding: const EdgeInsets.only(left: 0.0, right: 230, top: 15),
@@ -88,7 +95,7 @@ class _addPostState extends State<addPost> {
                             pickFile();
                           },
                           child: const Text(
-                            'Pick File',
+                            'Add Image',
                             style: TextStyle(fontSize: 24),
                           )),
                 ),
@@ -113,9 +120,15 @@ class _addPostState extends State<addPost> {
               //   },
               // ),
               const SizedBox(height: 20),
-              domain(),
             ],
           )),
+    );
+  }
+
+  Widget addlink() {
+    return TextFormField(
+      decoration: const InputDecoration(
+          labelText: 'Link', border: OutlineInputBorder()),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:ap/Register/otpscreen.dart';
+import 'package:ap/Register/otpslide.dart';
 import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/Register/register_button.dart';
 import 'package:ap/login/loginscreen.dart';
@@ -167,41 +168,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
               //   hintText: "Username",
               //   obscureText: false,
               //   icons: Icon(Icons.account_circle_outlined),
+              // // ),
+              // const SizedBox(height: 20),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 80),
+              //   child: TextFormField(
+              //       onChanged: (value) {
+              //         setState(() {
+              //           if (value.contains(' ')) {
+              //             regrollnoval = "Dont use blank spaces";
+              //           } else {
+              //             regrollnoval = "";
+              //           }
+              //         });
+              //       },
+              //       controller: registernoController,
+              //       decoration: InputDecoration(
+              //         errorText: regrollnoval.isEmpty ? null : regrollnoval,
+              //         prefixIcon: Icon(Icons.numbers),
+              //         border: OutlineInputBorder(
+              //           borderSide: const BorderSide(
+              //             color: Colors.blue,
+              //             width: 3,
+              //           ),
+              //           borderRadius: BorderRadius.circular(10),
+              //         ),
+              //         focusedBorder: OutlineInputBorder(
+              //           borderSide: const BorderSide(
+              //             color: Colors.black,
+              //             width: 1,
+              //           ),
+              //           borderRadius: BorderRadius.circular(10),
+              //         ),
+              //         labelText: 'RegisterNumber',
+              //       )),
               // ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
-                child: TextFormField(
-                    onChanged: (value) {
-                      setState(() {
-                        if (value.contains(' ')) {
-                          regrollnoval = "Dont use blank spaces";
-                        } else {
-                          regrollnoval = "";
-                        }
-                      });
-                    },
-                    controller: registernoController,
-                    decoration: InputDecoration(
-                      errorText: regrollnoval.isEmpty ? null : regrollnoval,
-                      prefixIcon: Icon(Icons.numbers),
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.blue,
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      labelText: 'RegisterNumber',
-                    )),
-              ),
               // SocialButton(
               //   controller: emailController,
               //   hintText: "name@domainname",
@@ -386,8 +387,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
           var password = passwordController.text;
           var cpass = confirmpassController.text;
           print(registerno + username + emailId + password + cpass);
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (BuildContext context) => OtpScreen()));
+          showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return Scaffold(
+                  appBar: AppBar(
+                    elevation: 0,
+                    title: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "OTP",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            children: [Icon(Icons.cancel)],
+                          )
+                        ]),
+                  ),
+                  body: OtpPopup(),
+                );
+              });
         });
   }
 }
