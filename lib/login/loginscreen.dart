@@ -1,12 +1,12 @@
 import 'package:ap/Pages/Home/HomeScreen.dart';
 import 'package:ap/Register/registerscreen.dart';
-import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/login/login_button.dart';
 // import 'package:ap/Home/pages/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:ap/component/validation.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: InputDecoration(
                       errorText:
                           unameerrorTextval.isEmpty ? null : unameerrorTextval,
-                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      prefixIcon: const Icon(Icons.account_circle_outlined),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: InputDecoration(
                       errorText:
                           passerrorTextval.isEmpty ? null : passerrorTextval,
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 15),
               GestureDetector(
-                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                child: const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   Text('ForgotPassword?',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ]),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => RegisterScreen()));
+                      builder: (BuildContext context) => const RegisterScreen()));
                 },
               ),
               const SizedBox(height: 25),
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => RegisterScreen()));
+                      builder: (BuildContext context) => const RegisterScreen()));
                 },
               )
             ],
@@ -175,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
           margin: const EdgeInsets.symmetric(horizontal: 90),
           decoration: const BoxDecoration(color: Colors.blue),
           child: const Center(
-              child: const Center(
+              child: Center(
             child: Text(
               "Sign In",
               style: TextStyle(
@@ -187,10 +187,10 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: () {
         var userName = usernameController.text;
         var password = passwordController.text;
-        print("username is " + userName);
-        print("password is " + password);
+        print("username is $userName");
+        print("password is $password");
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+            MaterialPageRoute(builder: (BuildContext context) => const HomePage()));
       },
     );
   }

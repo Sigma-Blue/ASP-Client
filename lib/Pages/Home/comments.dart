@@ -2,6 +2,8 @@ import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
 
 class comments extends StatefulWidget {
+  const comments({super.key});
+
   @override
   _commentsState createState() => _commentsState();
 }
@@ -51,9 +53,9 @@ class _commentsState extends State<comments> {
                 child: Container(
                   height: 50.0,
                   width: 50.0,
-                  decoration: new BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.blue,
-                      borderRadius: new BorderRadius.all(Radius.circular(50))),
+                      borderRadius: BorderRadius.all(Radius.circular(50))),
                   child: CircleAvatar(
                       radius: 50,
                       backgroundImage: CommentBox.commentImageParser(
@@ -62,10 +64,10 @@ class _commentsState extends State<comments> {
               ),
               title: Text(
                 data[i]['name'],
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(data[i]['message']),
-              trailing: Text(data[i]['date'], style: TextStyle(fontSize: 10)),
+              trailing: Text(data[i]['date'], style: const TextStyle(fontSize: 10)),
             ),
           )
       ],
@@ -76,12 +78,11 @@ class _commentsState extends State<comments> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Comment Page"),
+        title: const Text("Comment Page"),
         backgroundColor: Colors.pink,
       ),
       body: Container(
         child: CommentBox(
-          child: commentChild(filedata),
           labelText: 'Write a comment...',
           errorText: 'Comment cannot be blank',
           withBorder: false,
@@ -107,7 +108,8 @@ class _commentsState extends State<comments> {
           commentController: commentController,
           backgroundColor: Colors.pink,
           textColor: Colors.white,
-          sendWidget: Icon(Icons.send_sharp, size: 30, color: Colors.white),
+          sendWidget: const Icon(Icons.send_sharp, size: 30, color: Colors.white),
+          child: commentChild(filedata),
         ),
       ),
     );

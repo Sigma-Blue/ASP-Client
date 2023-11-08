@@ -4,6 +4,8 @@ import 'package:ap/login/loginscreen.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -66,7 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     controller: usernameController,
                     decoration: InputDecoration(
                       errorText: regrollnoval.isEmpty ? null : regrollnoval,
-                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      prefixIcon: const Icon(Icons.account_circle_outlined),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -108,7 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       errorText: regunameerrorTextval.isEmpty
                           ? null
                           : regunameerrorTextval,
-                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      prefixIcon: const Icon(Icons.account_circle_outlined),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -149,7 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     decoration: InputDecoration(
                       errorText:
                           regemailTextval.isEmpty ? null : regemailTextval,
-                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      prefixIcon: const Icon(Icons.account_circle_outlined),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -191,7 +193,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       errorText: regpasserrorTextval.isEmpty
                           ? null
                           : regpasserrorTextval,
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -225,7 +227,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: TextFormField(
                     controller: passwordController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -270,7 +272,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => LoginScreen()));
+                      builder: (BuildContext context) => const LoginScreen()));
                 },
               )
             ],
@@ -303,7 +305,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           var cpass = confirmpassController.text;
           print(registerno + username + emailId + password + cpass);
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (BuildContext context) => LoginScreen()));
+              builder: (BuildContext context) => const LoginScreen()));
         });
   }
 }

@@ -21,7 +21,7 @@ class Mybutton extends StatelessWidget {
             )),
         onTap: () {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (BuildContext context) => LoginScreen()));
+              builder: (BuildContext context) => const LoginScreen()));
         });
   }
 }

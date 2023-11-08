@@ -16,7 +16,7 @@ class _addpostFormState extends State<addpostForm> {
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.zero,
-        children: <Widget>[
+        children: const <Widget>[
           addPost(),
         ],
       ),

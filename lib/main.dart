@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Login page',
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: const LoginScreen(),
     );
   }
 }

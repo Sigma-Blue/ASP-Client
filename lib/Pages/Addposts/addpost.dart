@@ -30,19 +30,19 @@ class _addPostState extends State<addPost> {
             ]),
       ),
       body: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: ListView(
             children: [
               TextFormField(
                 minLines: 1,
                 maxLines: 30,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     labelText: 'Title', border: OutlineInputBorder()),
               ),
               TextFormField(
                 minLines: 1,
                 maxLines: 100,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     labelText: 'Caption', border: OutlineInputBorder()),
               ),
               const SizedBox(height: 20),
@@ -56,11 +56,11 @@ class _addPostState extends State<addPost> {
                 ),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => addImage()));
+                      builder: (BuildContext context) => const addImage()));
                 },
               ),
               const SizedBox(height: 20),
-              domain(),
+              const domain(),
             ],
           )),
     );

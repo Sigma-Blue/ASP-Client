@@ -29,8 +29,8 @@ class _domainState extends State<domain> {
                           _value = 1;
                         });
                       }),
-                  SizedBox(height: 10),
-                  Text("Internship")
+                  const SizedBox(height: 10),
+                  const Text("Internship")
                 ],
               ),
               Row(
@@ -43,8 +43,8 @@ class _domainState extends State<domain> {
                           _value = 2;
                         });
                       }),
-                  SizedBox(height: 10),
-                  Text("Job")
+                  const SizedBox(height: 10),
+                  const Text("Job")
                 ],
               ),
               Row(
@@ -57,8 +57,8 @@ class _domainState extends State<domain> {
                           _value = 3;
                         });
                       }),
-                  SizedBox(height: 10),
-                  Text("Research")
+                  const SizedBox(height: 10),
+                  const Text("Research")
                 ],
               ),
               Row(
@@ -71,8 +71,8 @@ class _domainState extends State<domain> {
                           _value = 4;
                         });
                       }),
-                  SizedBox(height: 10),
-                  Text("Projects")
+                  const SizedBox(height: 10),
+                  const Text("Projects")
                 ],
               ),
             ],
