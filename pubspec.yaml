@@ -39,6 +39,17 @@ dependencies:
   comment_box: ^0.0.18
   favorite_button: ^0.0.4
   font_awesome_flutter: '>= 4.7.0'
+  image_picker: ^1.0.4
+  image_picker_for_web: ^3.0.1
+  provider: ^6.0.5
+  http: ^1.1.0
+  flutter_pw_validator: ^1.6.0
+  email_validator_flutter: ^1.0.0
+  email_validator: ^2.1.17
+  cloudinary_flutter: ^1.0.0
+  cloudinary_url_gen: ^1.0.0
+  
+
 
 dev_dependencies:
   flutter_test:

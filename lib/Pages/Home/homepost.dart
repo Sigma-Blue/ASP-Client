@@ -25,11 +25,16 @@ class _postState extends State<Userpost> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundImage:
+                          AssetImage('assets/images/profilepicture.jpg'),
+                    ),
                     const SizedBox(
                       width: 10,
                     ),
@@ -95,7 +100,7 @@ class _postState extends State<Userpost> {
                       });
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 0, right: .0),
+                      padding: const EdgeInsets.only(left: 0, right: 0),
                       child: Icon(
                         (save == false)
                             ? Icons.bookmark_border

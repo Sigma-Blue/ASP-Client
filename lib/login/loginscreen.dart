@@ -1,8 +1,13 @@
 import 'package:ap/Pages/Home/HomeScreen.dart';
 import 'package:ap/Register/registerscreen.dart';
+import 'package:ap/login/forgotpassword.dart';
+import 'package:ap/login/forgotpasswordemail.dart';
+// import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/login/login_button.dart';
 // import 'package:ap/Home/pages/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:ap/component/validation.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,11 +26,28 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      appBar: AppBar(
+        elevation: 0,
+        title: const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "ASP",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                children: [Icon(Icons.info_outline)],
+              )
+            ]),
+      ),
+      body: Container(
         child: Form(
+            child: Container(
+                child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 140),
+              const SizedBox(height: 100),
               const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -75,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.black,
-                          width: 4,
+                          width: 1,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -86,59 +108,72 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: TextFormField(
-                    onChanged: (value) {
-                      setState(() {
-                        if (value.contains(' ')) {
-                          passerrorTextval = "Dont use blank spaces";
-                        } else {
-                          passerrorTextval = "";
-                        }
-                      });
-                    },
-                    controller: passwordController,
-                    decoration: InputDecoration(
-                      errorText:
-                          passerrorTextval.isEmpty ? null : passerrorTextval,
-                      prefixIcon: const Icon(Icons.lock),
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.blue,
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
+                  onChanged: (value) {
+                    setState(() {
+                      if (value.contains(' ')) {
+                        passerrorTextval = "Dont use blank spaces";
+                      } else {
+                        passerrorTextval = "";
+                      }
+                    });
+                  },
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    errorText:
+                        passerrorTextval.isEmpty ? null : passerrorTextval,
+                    prefixIcon: Icon(Icons.lock),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
+                        width: 3,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                          width: 4,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.black,
+                        width: 1,
                       ),
-                      labelText: 'Password',
-                      suffixIcon: IconButton(
-                        icon: Icon(isPasswordObscured
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                        onPressed: () {
-                          setState(() {
-                            isPasswordObscured = !isPasswordObscured;
-                          });
-                        },
-                      ),
-                    )),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    labelText: 'Password',
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isPasswordObscured = !isPasswordObscured;
+                        });
+                      },
+                      icon: Icon(isPasswordObscured
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                    ),
+                  ),
+                  obscureText: isPasswordObscured,
+                ),
               ),
               const SizedBox(height: 15),
               GestureDetector(
-                child: const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                  Text('ForgotPassword?',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
-                          fontSize: 15)),
+                child: Row(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 200.0),
+                    child: Text('ForgotPassword?',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                            fontSize: 15)),
+                  ),
                 ]),
                 onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => const RegisterScreen()));
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Scaffold(
+                          appBar: AppBar(
+                            title: Text("Email"),
+                          ),
+                          body: ForgotPassEmail(),
+                        );
+                      });
                 },
               ),
               const SizedBox(height: 25),
@@ -158,12 +193,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => const RegisterScreen()));
+                      builder: (BuildContext context) =>
+                          const RegisterScreen()));
                 },
               )
             ],
           ),
-        ),
+        ))),
       ),
     );
   }
@@ -189,8 +225,8 @@ class _LoginScreenState extends State<LoginScreen> {
         var password = passwordController.text;
         print("username is $userName");
         print("password is $password");
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => const HomePage()));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => const HomePage()));
       },
     );
   }

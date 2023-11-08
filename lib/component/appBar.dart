@@ -1,15 +1,13 @@
-import 'package:ap/Pages/Home/homepost.dart';
-import 'package:ap/Pages/Home/post.dart';
 import 'package:flutter/material.dart';
 
-class SavedFiles extends StatefulWidget {
-  const SavedFiles({super.key});
+class appBar extends StatefulWidget {
+  const appBar({super.key});
 
   @override
-  State<SavedFiles> createState() => _SavedFilesState();
+  State<appBar> createState() => _appBarState();
 }
 
-class _SavedFilesState extends State<SavedFiles> {
+class _appBarState extends State<appBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +17,15 @@ class _SavedFilesState extends State<SavedFiles> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Saved Posts",
+                "ASP",
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
+              Row(
+                children: [Icon(Icons.menu)],
+              )
             ]),
       ),
-      body: Userpost(name: 'Charu', caption: "Saved First Post", likes: 43),
     );
   }
 }

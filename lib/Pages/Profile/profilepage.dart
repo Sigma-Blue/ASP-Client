@@ -22,19 +22,10 @@ class _ProfilePageState extends State<ProfilePage> {
         elevation: 0,
         title:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          const Text(
+          Text(
             "ASP",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
-          Row(
-            children: [
-              IconButton(
-                iconSize: 20,
-                onPressed: () {},
-                icon: const Icon(Icons.settings),
-              ),
-            ],
-          )
         ]),
       ),
       body: ListView(
@@ -154,7 +145,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget buildCoverImage() => Container(
         child: Image.asset(
-          'assets/images/coverpicture.png',
+          'assets/images/profilepicture.jpg',
           width: double.infinity,
           height: coverHeight,
           fit: BoxFit.cover,
@@ -162,8 +153,8 @@ class _ProfilePageState extends State<ProfilePage> {
       );
   Widget buildProfileImage() => CircleAvatar(
         radius: profileHeight / 2,
-        backgroundImage: const AssetImage(
-          'assets/images/profilepicture.jpg',
+        backgroundImage: AssetImage(
+          'assets/images/coverpicture.png',
         ),
       );
   Widget buildSocialIcon(IconData icon) => CircleAvatar(
