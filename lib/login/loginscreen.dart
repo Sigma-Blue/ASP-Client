@@ -30,9 +30,9 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "ASP",
+                "Alumni Student platform",
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [Icon(Icons.info_outline)],
@@ -43,188 +43,203 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Form(
             child: Container(
                 child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 100),
-              const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text("Welcome back",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20)),
-                      ])),
-              const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text("SignIn to continue exploring",
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: Colors.grey,
-                              fontSize: 20,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 70),
+                      const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 25.0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text("Welcome back",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                              ])),
+                      const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 25.0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text("SignIn to continue exploring",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.grey,
+                                      fontSize: 20,
+                                    )),
+                              ])),
+                      const SizedBox(height: 100),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 60),
+                        child: TextFormField(
+                            onChanged: (value) {
+                              setState(() {
+                                if (value.contains(' ')) {
+                                  unameerrorTextval = "Dont use blank spaces";
+                                } else {
+                                  unameerrorTextval = "";
+                                }
+                              });
+                            },
+                            controller: usernameController,
+                            decoration: InputDecoration(
+                              errorText:
+                              unameerrorTextval.isEmpty
+                                  ? null
+                                  : unameerrorTextval,
+                              prefixIcon: Icon(Icons.account_circle_outlined),
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Colors.blue,
+                                  width: 3,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Colors.black,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelText: 'Username',
                             )),
-                      ])),
-              const SizedBox(height: 50),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
-                child: TextFormField(
-                    onChanged: (value) {
-                      setState(() {
-                        if (value.contains(' ')) {
-                          unameerrorTextval = "Dont use blank spaces";
-                        } else {
-                          unameerrorTextval = "";
-                        }
-                      });
-                    },
-                    controller: usernameController,
-                    decoration: InputDecoration(
-                      errorText:
-                          unameerrorTextval.isEmpty ? null : unameerrorTextval,
-                      prefixIcon: Icon(Icons.account_circle_outlined),
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.blue,
-                          width: 3,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      labelText: 'Username',
-                    )),
-              ),
-              const SizedBox(height: 50),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
-                child: TextFormField(
-                  onChanged: (value) {
-                    setState(() {
-                      if (value.contains(' ')) {
-                        passerrorTextval = "Dont use blank spaces";
-                      } else {
-                        passerrorTextval = "";
-                      }
-                    });
-                  },
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    errorText:
-                        passerrorTextval.isEmpty ? null : passerrorTextval,
-                    prefixIcon: Icon(Icons.lock),
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.blue,
-                        width: 3,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    labelText: 'Password',
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          isPasswordObscured = !isPasswordObscured;
-                        });
-                      },
-                      icon: Icon(isPasswordObscured
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                    ),
-                  ),
-                  obscureText: isPasswordObscured,
-                ),
-              ),
-              const SizedBox(height: 15),
-              GestureDetector(
-                child: Row(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 200.0),
-                    child: Text('ForgotPassword?',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue,
-                            fontSize: 15)),
-                  ),
-                ]),
-                onTap: () {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Scaffold(
-                          appBar: AppBar(
-                            title: Text("Email"),
+                      const SizedBox(height: 30),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 60),
+                        child: TextFormField(
+                          onChanged: (value) {
+                            setState(() {
+                              if (value.contains(' ')) {
+                                passerrorTextval = "Dont use blank spaces";
+                              } else {
+                                passerrorTextval = "";
+                              }
+                            });
+                          },
+                          controller: passwordController,
+                          decoration: InputDecoration(
+                            errorText:
+                            passerrorTextval.isEmpty ? null : passerrorTextval,
+                            prefixIcon: Icon(Icons.lock),
+                            border: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Colors.blue,
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Colors.black,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            labelText: 'Password',
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  isPasswordObscured = !isPasswordObscured;
+                                });
+                              },
+                              icon: Icon(isPasswordObscured
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                            ),
                           ),
-                          body: ForgotPassEmail(),
-                        );
-                      });
-                },
-              ),
-              const SizedBox(height: 25),
-              myButton(),
-              const SizedBox(height: 35),
-              const Text(
-                "Don't have an account ?",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              GestureDetector(
-                child: const Text(
-                  "Click here to Sign Up !!!",
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => RegisterScreen()));
-                },
-              )
-            ],
-          ),
-        ))),
+                          obscureText: isPasswordObscured,
+                        ),
+                      ),
+                      const SizedBox(height: 25),
+                      GestureDetector(
+                        child: Row(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 200.0),
+                            child: Text('ForgotPassword?',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue,
+                                    fontSize: 15)),
+                          ),
+                        ]),
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Scaffold(
+                                  appBar: AppBar(
+                                    title: Text("Email"),
+                                  ),
+                                  body: ForgotPassEmail(),
+                                );
+                              });
+                        },
+                      ),
+                      const SizedBox(height: 40),
+                      myButton(),
+                      const SizedBox(height: 25),
+                      const Text(
+                        "Don't have an account ?",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                      GestureDetector(
+                        child: const Text(
+                          "Click here to Sign Up !!!",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      RegisterScreen()));
+                        },
+                      )
+                    ],
+                  ),
+                ))),
       ),
     );
   }
 
   Widget myButton() {
     return GestureDetector(
-      child: Container(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10), // Adjust the radius for desired curvature
+        child: Container(
           padding: const EdgeInsets.all(8),
-          margin: const EdgeInsets.symmetric(horizontal: 90),
-          decoration: const BoxDecoration(color: Colors.blue),
-          child: const Center(
-              child: const Center(
+          margin: const EdgeInsets.symmetric(horizontal: 120),
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(10), // Apply the same radius for consistency
+          ),
+          child: Center(
             child: Text(
               "Sign In",
               style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25),
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
             ),
-          ))),
+          ),
+        ),
+      ),
       onTap: () {
         var userName = usernameController.text;
         var password = passwordController.text;
         print("username is " + userName);
         print("password is " + password);
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+          MaterialPageRoute(builder: (BuildContext context) => HomePage()),
+        );
       },
     );
   }
+
 }

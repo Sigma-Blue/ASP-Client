@@ -31,7 +31,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             height: 30,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 80),
+            padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
               onChanged: (value) {
                 setState(() {
@@ -81,7 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           ),
           const SizedBox(height: 30),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 80),
+            padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
                 onChanged: (value) {
                   setState(() {
@@ -159,27 +159,70 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           ),
           Row(
             children: [
-              cancelbutton(),
               GestureDetector(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10), // Adjust the radius for desired curvature
                   child: Container(
-                      padding: const EdgeInsets.all(7),
-                      margin: const EdgeInsets.only(left: 70, right: 20),
-                      decoration: const BoxDecoration(color: Colors.blue),
-                      child: Center(
-                        child: Text(
-                          "RESET",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.only(left: 65, right: 50),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10), // Apply the same radius for consistency
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Cancel",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
                         ),
-                      )),
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) => LoginScreen()));
-                  }),
+                      ),
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => LoginScreen(),
+                    ),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10), // Adjust the radius for desired curvature
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.only(left: 50, right: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10), // Apply the same radius for consistency
+                    ),
+                    child: Center(
+                      child: Text(
+                        "RESET",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => LoginScreen(),
+                    ),
+                  );
+                },
+              ),
             ],
           )
+
+
         ]),
       ),
     ));
