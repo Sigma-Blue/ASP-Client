@@ -48,13 +48,13 @@ class _MyProfileState extends State<MyProfile> {
                 ),
               ],
             ),
-            Expanded(
-                child: TabBarView(children: [
-              About(),
-              About(),
-              About(),
-              About(),
-            ]))
+            // Expanded(
+            //     child: TabBarView(children: [
+            //   About(),
+            //   About(),
+            //   About(),
+            //   About(),
+            // ]))
           ],
         ),
       ),
