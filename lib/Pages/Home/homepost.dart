@@ -38,17 +38,17 @@ class _postState extends State<Userpost> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Text("${widget.name}",
-                        style: TextStyle(
+                    Text(widget.name,
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 17)),
                   ]),
-                  Icon(Icons.more_vert)
+                  const Icon(Icons.more_vert)
                 ])
             // Profile Photo
 
             ),
         Padding(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: Image.asset("assets/images/coverpicture.png"),
         ),
 
@@ -73,7 +73,6 @@ class _postState extends State<Userpost> {
                             print(click);
                           });
 
-                          ;
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(left: 0, right: .0),
@@ -85,9 +84,9 @@ class _postState extends State<Userpost> {
                           ),
                         )),
                   ),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 13.0)),
-                  commentpopup(),
+                  const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 13.0)),
+                  const commentpopup(),
                 ],
               ),
               Expanded(
@@ -117,8 +116,8 @@ class _postState extends State<Userpost> {
           padding: const EdgeInsets.only(left: 20.0, top: 0.0),
           child: Row(children: [
             Text(
-              widget.likes.toString() + " Likes",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              "${widget.likes} Likes",
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             )
           ]),
         ),
@@ -126,12 +125,12 @@ class _postState extends State<Userpost> {
           padding: const EdgeInsets.only(left: 16.0, top: 8.0),
           child: Row(children: [
             Text(
-              widget.name + " ",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              "${widget.name} ",
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
             Text(
               widget.caption,
-              style: TextStyle(fontSize: 17),
+              style: const TextStyle(fontSize: 17),
             )
           ]),
         ),
