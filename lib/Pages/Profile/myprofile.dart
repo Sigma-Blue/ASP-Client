@@ -1,6 +1,8 @@
 //import 'package:alumni_studentpage/utils/userpreferance.dart';
 
 import 'package:ap/Pages/Profile/numbers_widget.dart';
+import 'package:ap/Pages/Profile/About.dart';
+import 'package:ap/Pages/Profile/skills.dart';
 import 'package:flutter/material.dart';
 
 class MyProfile extends StatefulWidget {
@@ -12,100 +14,60 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
+  // bool isAbout = true;
+  // bool isSkills = false;
+  bool isExperience = false;
   final double coverHeight = 210;
   final double profileHeight = 124;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          const Text(
-            "ASP",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          Row(
-            children: [
-              IconButton(
-                iconSize: 20,
-                onPressed: () {},
-                icon: const Icon(Icons.settings),
-              ),
-            ],
-          ),
-        ]),
-      ),
-      body: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          buildTop(),
-          buildContent(),
-          buildOptions(),
-        ],
+    return DefaultTabController(
+      length: 10,
+      child: Scaffold(
+        body: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            buildTop(),
+            buildContent(),
+            TabBar(
+              indicatorColor: Colors.blue,
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.grey,
+              tabs: [
+                Tab(
+                  text: "ABOUT",
+                ),
+                Tab(
+                  text: "EXPERIENCE",
+                ),
+                Tab(
+                  text: "SKILLS",
+                ),
+                Tab(
+                  text: "EDUCATION",
+                ),
+              ],
+            ),
+            Expanded(
+                child: TabBarView(children: [
+              About(),
+              About(),
+              About(),
+              About(),
+            ]))
+          ],
+        ),
       ),
     );
   }
 
-  Widget buildOptions() => Container(
-        child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(4.0),
-                        child: Text(
-                          "ABOUT",
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(4.0),
-                        child: Text(
-                          "SKILLS",
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(4.0),
-                        child: Text(
-                          "EXPERIENCE",
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(4.0),
-                        child: Text(
-                          "EDUCATION",
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                ),
-              ],
-            )),
+  Widget buildAbout() => Container(
+        child: const Column(
+          children: [
+            SizedBox(height: 40),
+            Text("This is the details about the user")
+          ],
+        ),
       );
 
   Widget buildContent() => Container(

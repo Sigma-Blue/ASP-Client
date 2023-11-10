@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         const SizedBox(height: 16),
         Padding(
-          padding: const EdgeInsets.only(left: 10.0),
+          padding: const EdgeInsets.only(left: 16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -62,15 +62,15 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(width: 10),
               buildSocialIcon(FontAwesomeIcons.linkedin),
               const SizedBox(width: 10),
-              Row(
-                children: [
-                  IconButton(
-                    iconSize: 16,
-                    onPressed: () {},
-                    icon: const Icon(Icons.edit),
-                  )
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     IconButton(
+              //       iconSize: 16,
+              //       onPressed: () {},
+              //       icon: const Icon(Icons.edit),
+              //     )
+              //   ],
+              // ),
             ],
           ),
         ),

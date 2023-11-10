@@ -6,6 +6,7 @@ import 'package:ap/Pages/Files/files.dart';
 // import 'package:ap/Pages/Addposts/domain.dart';
 // import 'package:ap/Pages/Files/files.dart';
 import 'package:ap/Pages/Home/home.dart';
+import 'package:ap/Pages/Profile/myprofile.dart';
 // import 'package:ap/Pages/Profile/account.dart';
 import 'package:ap/Pages/Profile/profilepage.dart';
 // import 'package:ap/Pages/Profile/profile.dart';
@@ -30,12 +31,13 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _children = [
     Home(),
     Search(Username: "Gokulramana", Usertype: "Alumni"),
-    SavedFiles(),
+    ProfilePage(name: "Swetha", Usertype: "Student"),
     addPost(),
-    ProfilePage(
-      name: 'Monikashri',
-      Usertype: 'Student',
-    ),
+    MyProfile(name: "Monikashri", Usertype: "Alumni")
+    // ProfilePage(
+    //   name: 'Monikashri',
+    //   Usertype: 'Student',
+    // ),
   ];
   @override
   Widget build(BuildContext context) {
