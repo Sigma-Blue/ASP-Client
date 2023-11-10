@@ -48,6 +48,8 @@ dependencies:
   email_validator: ^2.1.17
   cloudinary_flutter: ^1.0.0
   cloudinary_url_gen: ^1.0.0
+  api_cache_manager: ^1.0.2
+  snippet_coder_utils: ^1.0.15
   
 
 

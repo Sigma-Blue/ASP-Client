@@ -49,7 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "ASP",
+                "Alumni Student Platform",
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
@@ -86,9 +86,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               fontSize: 20,
                             )),
                       ])),
-              const SizedBox(height: 20),
+              const SizedBox(height: 80),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
+                padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: TextFormField(
                     onChanged: (value) {
                       setState(() {
@@ -122,15 +122,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       labelText: 'Username',
                     )),
               ),
-              // SocialButton(
-              //   controller: registernoController,
-              //   hintText: "Register Number",
-              //   obscureText: false,
-              //   icons: Icon(Icons.numbers),
-              // ),
+
               const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
+                padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: TextFormField(
                     onChanged: (value) {
                       setState(() {
@@ -165,55 +160,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       labelText: 'emailId',
                     )),
               ),
-              // SocialButton(
-              //   controller: usernameController,
-              //   hintText: "Username",
-              //   obscureText: false,
-              //   icons: Icon(Icons.account_circle_outlined),
-              // // ),
-              // const SizedBox(height: 20),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 80),
-              //   child: TextFormField(
-              //       onChanged: (value) {
-              //         setState(() {
-              //           if (value.contains(' ')) {
-              //             regrollnoval = "Dont use blank spaces";
-              //           } else {
-              //             regrollnoval = "";
-              //           }
-              //         });
-              //       },
-              //       controller: registernoController,
-              //       decoration: InputDecoration(
-              //         errorText: regrollnoval.isEmpty ? null : regrollnoval,
-              //         prefixIcon: Icon(Icons.numbers),
-              //         border: OutlineInputBorder(
-              //           borderSide: const BorderSide(
-              //             color: Colors.blue,
-              //             width: 3,
-              //           ),
-              //           borderRadius: BorderRadius.circular(10),
-              //         ),
-              //         focusedBorder: OutlineInputBorder(
-              //           borderSide: const BorderSide(
-              //             color: Colors.black,
-              //             width: 1,
-              //           ),
-              //           borderRadius: BorderRadius.circular(10),
-              //         ),
-              //         labelText: 'RegisterNumber',
-              //       )),
-              // ),
-              // SocialButton(
-              //   controller: emailController,
-              //   hintText: "name@domainname",
-              //   obscureText: false,
-              //   icons: Icon(Icons.email_outlined),
-              // ),
+
               const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
+                padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: TextFormField(
                   onChanged: (value) {
                     setState(() {
@@ -263,7 +213,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
+                padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: TextFormField(
                     onChanged: (value) {
                       setState(() {
@@ -337,9 +287,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     controller: passwordController),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 30),
               mybutton(),
-              const SizedBox(height: 15),
+              const SizedBox(height: 25),
               const Text(
                 "Already have an account ?",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -369,28 +319,62 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Widget mybutton() {
     return GestureDetector(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10), // Adjust the radius for desired curvature
         child: Container(
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.symmetric(horizontal: 50),
-            decoration: const BoxDecoration(color: Colors.blue),
-            child: const Center(
-              child: Text(
-                "Sign Up",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25),
+          padding: const EdgeInsets.all(8),
+          margin: const EdgeInsets.symmetric(horizontal: 120),
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(10), // Apply the same radius for consistency
+          ),
+          child: Center(
+            child: Text(
+              "Sign Up",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
               ),
-            )),
-        onTap: () {
-          var registerno = registernoController.text;
-          var username = usernameController.text;
-          var emailId = emailController.text;
-          var password = passwordController.text;
-          var cpass = confirmpassController.text;
-          print(registerno + username + emailId + password + cpass);
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (BuildContext context) => LoginScreen()));
-        });
+            ),
+          ),
+        ),
+      ),
+      onTap: () {
+        var registerno = registernoController.text;
+        var username = usernameController.text;
+        var emailId = emailController.text;
+        var password = passwordController.text;
+        var cpass = confirmpassController.text;
+        print(registerno + username + emailId + password + cpass);
+        showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return Scaffold(
+              appBar: AppBar(
+                elevation: 0,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "OTP",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      children: [Icon(Icons.cancel)],
+                    )
+                  ],
+                ),
+              ),
+              body: OtpPopup(),
+            );
+          },
+        );
+      },
+    );
   }
+
 }

@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "ASP",
+                "Alumni Student platform",
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 100),
+              const SizedBox(height: 70),
               const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -69,9 +69,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontSize: 20,
                             )),
                       ])),
-              const SizedBox(height: 50),
+              const SizedBox(height: 100),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
+                padding: const EdgeInsets.symmetric(horizontal: 60),
                 child: TextFormField(
                     onChanged: (value) {
                       setState(() {
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: InputDecoration(
                       errorText:
                           unameerrorTextval.isEmpty ? null : unameerrorTextval,
-                      prefixIcon: const Icon(Icons.account_circle_outlined),
+                      prefixIcon: Icon(Icons.account_circle_outlined),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -104,9 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: 'Username',
                     )),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
+                padding: const EdgeInsets.symmetric(horizontal: 60),
                 child: TextFormField(
                   onChanged: (value) {
                     setState(() {
@@ -151,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: isPasswordObscured,
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 25),
               GestureDetector(
                 child: Row(children: [
                   Padding(
@@ -176,9 +176,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       });
                 },
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 40),
               myButton(),
-              const SizedBox(height: 35),
+              const SizedBox(height: 25),
               const Text(
                 "Don't have an account ?",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -193,8 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          const RegisterScreen()));
+                      builder: (BuildContext context) => RegisterScreen()));
                 },
               )
             ],
@@ -206,27 +205,37 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget myButton() {
     return GestureDetector(
-      child: Container(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(
+            10), // Adjust the radius for desired curvature
+        child: Container(
           padding: const EdgeInsets.all(8),
-          margin: const EdgeInsets.symmetric(horizontal: 90),
-          decoration: const BoxDecoration(color: Colors.blue),
-          child: const Center(
-              child: Center(
+          margin: const EdgeInsets.symmetric(horizontal: 120),
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(
+                10), // Apply the same radius for consistency
+          ),
+          child: Center(
             child: Text(
               "Sign In",
               style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25),
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
             ),
-          ))),
+          ),
+        ),
+      ),
       onTap: () {
         var userName = usernameController.text;
         var password = passwordController.text;
-        print("username is $userName");
-        print("password is $password");
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => const HomePage()));
+        print("username is " + userName);
+        print("password is " + password);
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (BuildContext context) => HomePage()),
+        );
       },
     );
   }

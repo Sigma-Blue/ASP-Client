@@ -20,7 +20,7 @@ class _forgotOtpPopupState extends State<forgotOtpPopup> {
       child: SingleChildScrollView(
         child: Column(children: [
           Padding(
-            padding: const EdgeInsets.only(top: 100, left: 70, right: 70),
+            padding: const EdgeInsets.only(top: 120, left: 50, right: 50),
             child: TextFormField(
                 onChanged: (value) {
                   setState(() {
@@ -53,31 +53,41 @@ class _forgotOtpPopupState extends State<forgotOtpPopup> {
                 )),
           ),
           GestureDetector(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20), // Adjust the radius for desired curvature
               child: Container(
-                  padding: const EdgeInsets.all(8),
-                  margin: const EdgeInsets.only(top: 50, left: 120, right: 120),
-                  decoration: const BoxDecoration(color: Colors.blue),
-                  child: Center(
-                    child: Text(
-                      "SUBMIT",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25),
+                padding: const EdgeInsets.all(8),
+                margin: const EdgeInsets.only(top: 50, left: 120, right: 120),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10), // Apply the same radius for consistency
+                ),
+                child: Center(
+                  child: Text(
+                    "SUBMIT",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
                     ),
-                  )),
-              onTap: () {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Scaffold(
-                        appBar: AppBar(
-                          title: Text("Reset Password"),
-                        ),
-                        body: ForgotPassword(),
-                      );
-                    });
-              }),
+                  ),
+                ),
+              ),
+            ),
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: Text("Reset Password"),
+                    ),
+                    body: ForgotPassword(),
+                  );
+                },
+              );
+            },
+          ),
         ]),
       ),
     ));

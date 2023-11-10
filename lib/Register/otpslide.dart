@@ -19,7 +19,7 @@ class _OtpPopupState extends State<OtpPopup> {
       child: SingleChildScrollView(
         child: Column(children: [
           Padding(
-            padding: const EdgeInsets.only(top: 100, left: 70, right: 70),
+            padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
             child: TextFormField(
                 onChanged: (value) {
                   setState(() {
@@ -52,24 +52,32 @@ class _OtpPopupState extends State<OtpPopup> {
                 )),
           ),
           GestureDetector(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10), // Adjust the radius for desired curvature
               child: Container(
-                  padding: const EdgeInsets.all(8),
-                  margin: const EdgeInsets.only(top: 50, left: 120, right: 120),
-                  decoration: const BoxDecoration(color: Colors.blue),
-                  child: Center(
-                    child: Text(
-                      "SUBMIT",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25),
+                padding: const EdgeInsets.all(8),
+                margin: EdgeInsets.only(top: 50, left: 120, right: 120),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10), // Apply the same radius for consistency
+                ),
+                child: Center(
+                  child: Text(
+                    "SUBMIT",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
                     ),
-                  )),
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (BuildContext context) => LoginScreen()));
-              }),
-        ]),
+                  ),
+                ),
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) => LoginScreen()));
+            },
+          )]),
       ),
     ));
   }

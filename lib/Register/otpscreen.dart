@@ -65,26 +65,33 @@ class _OtpScreenState extends State<OtpScreen> {
                     labelText: 'Enter OTP',
                   )),
             ),
-            GestureDetector(
-                child: Container(
-                    padding: const EdgeInsets.all(8),
-                    margin:
-                        const EdgeInsets.only(top: 50, left: 120, right: 120),
-                    decoration: const BoxDecoration(color: Colors.blue),
-                    child: Center(
-                      child: Text(
-                        "SUBMIT",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25),
-                      ),
-                    )),
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => LoginScreen()));
-                }),
-          ]),
-        ));
+        GestureDetector(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30), // Adjust the radius for desired curvature
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              margin: EdgeInsets.only(top: 50, left: 120, right: 120),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(30), // Apply the same radius for consistency
+              ),
+              child: Center(
+                child: Text(
+                  "SUBMIT",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          onTap: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (BuildContext context) => LoginScreen()));
+          },
+        )]),
+    ));
   }
 }
