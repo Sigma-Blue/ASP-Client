@@ -52,12 +52,12 @@ class _addImageState extends State<addImage> {
             padding: const EdgeInsets.only(left: 0.0, top: 30),
             child: Container(
               child: isLoading
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : TextButton(
                       onPressed: () {
                         pickFile();
                       },
-                      child: Text(
+                      child: const Text(
                         'Pick File',
                         style: TextStyle(fontSize: 24),
                       )),

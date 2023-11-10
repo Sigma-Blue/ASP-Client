@@ -1,5 +1,5 @@
 import 'package:ap/Pages/Home/homepost.dart';
-import 'package:ap/Pages/Home/post.dart';
+// import 'package:ap/Pages/Home/post.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {

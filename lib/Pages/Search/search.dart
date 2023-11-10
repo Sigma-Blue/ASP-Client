@@ -18,17 +18,17 @@ class Search extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide.none),
                   filled: true,
-                  fillColor: Color.fromARGB(255, 105, 101, 101),
+                  fillColor: const Color.fromARGB(255, 105, 101, 101),
                   hintText: 'Search',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  prefixIcon: Icon(Icons.search, color: Colors.grey)),
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(Icons.search, color: Colors.grey)),
             )),
       ),
       body: ListView.builder(
         itemCount: 13,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               radius: 25,
               backgroundImage: NetworkImage(""),
             ),

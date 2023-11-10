@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -387,29 +389,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           var password = passwordController.text;
           var cpass = confirmpassController.text;
           print(registerno + username + emailId + password + cpass);
-          showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return Scaffold(
-                  appBar: AppBar(
-                    elevation: 0,
-                    title: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "OTP",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Row(
-                            children: [Icon(Icons.cancel)],
-                          )
-                        ]),
-                  ),
-                  body: OtpPopup(),
-                );
-              });
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (BuildContext context) => LoginScreen()));
         });
   }
 }

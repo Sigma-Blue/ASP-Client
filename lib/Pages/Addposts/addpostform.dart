@@ -1,6 +1,6 @@
-import 'package:ap/Pages/Addposts/addImage.dart';
+// import 'package:ap/Pages/Addposts/addImage.dart';
 import 'package:ap/Pages/Addposts/addpost.dart';
-import 'package:ap/Pages/Addposts/domain.dart';
+// import 'package:ap/Pages/Addposts/domain.dart';
 import 'package:flutter/material.dart';
 
 class addpostForm extends StatefulWidget {
@@ -16,7 +16,7 @@ class _addpostFormState extends State<addpostForm> {
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.zero,
-        children: <Widget>[
+        children: const <Widget>[
           addPost(),
         ],
       ),

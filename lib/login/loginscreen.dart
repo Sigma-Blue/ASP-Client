@@ -10,6 +10,8 @@ import 'package:ap/component/validation.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -84,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: InputDecoration(
                       errorText:
                           unameerrorTextval.isEmpty ? null : unameerrorTextval,
-                      prefixIcon: Icon(Icons.account_circle_outlined),
+                      prefixIcon: const Icon(Icons.account_circle_outlined),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Colors.blue,
@@ -191,7 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => RegisterScreen()));
+                      builder: (BuildContext context) =>
+                          const RegisterScreen()));
                 },
               )
             ],
@@ -208,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
           margin: const EdgeInsets.symmetric(horizontal: 90),
           decoration: const BoxDecoration(color: Colors.blue),
           child: const Center(
-              child: const Center(
+              child: Center(
             child: Text(
               "Sign In",
               style: TextStyle(
@@ -220,10 +223,10 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: () {
         var userName = usernameController.text;
         var password = passwordController.text;
-        print("username is " + userName);
-        print("password is " + password);
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+        print("username is $userName");
+        print("password is $password");
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => const HomePage()));
       },
     );
   }

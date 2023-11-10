@@ -2,13 +2,12 @@
 
 import 'package:ap/Pages/Profile/numbers_widget.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
   final String name;
   final String Usertype;
-  ProfilePage({required this.name, required this.Usertype});
+  const ProfilePage({super.key, required this.name, required this.Usertype});
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -43,15 +42,15 @@ class _ProfilePageState extends State<ProfilePage> {
         const SizedBox(height: 8),
         Text(
           widget.name,
-          style: TextStyle(fontSize: 40, color: Colors.black),
+          style: const TextStyle(fontSize: 40, color: Colors.black),
         ),
         Text(
           widget.Usertype,
-          style: TextStyle(fontSize: 20, color: Colors.black),
+          style: const TextStyle(fontSize: 20, color: Colors.black),
         ),
         const SizedBox(height: 16),
         Padding(
-          padding: const EdgeInsets.only(left: 10.0),
+          padding: const EdgeInsets.only(left: 16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -63,39 +62,65 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(width: 10),
               buildSocialIcon(FontAwesomeIcons.linkedin),
               const SizedBox(width: 10),
-              Row(
-                children: [
-                  IconButton(
-                    iconSize: 16,
-                    onPressed: () {},
-                    icon: Icon(Icons.edit),
-                  )
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     IconButton(
+              //       iconSize: 16,
+              //       onPressed: () {},
+              //       icon: const Icon(Icons.edit),
+              //     )
+              //   ],
+              // ),
             ],
           ),
         ),
         const SizedBox(height: 12),
-        Divider(),
+        const Divider(),
         const SizedBox(height: 12),
-        NumbersWidget(),
+        const NumbersWidget(),
         const SizedBox(height: 12),
-        Divider(),
+        const Divider(),
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: ElevatedButton(
                   onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
                     child: Text(
                       "ABOUT",
                       style:
                           TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                   )),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: Text(
+                      "SKILLS",
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    ),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: Text(
+                      "EXPERIENCE",
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    ),
+                  )),
+            ),
           ],
         )
       ]);
@@ -136,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage> {
         radius: 25,
         backgroundColor: Colors.black,
         child: Material(
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             clipBehavior: Clip.hardEdge,
             color: Colors.transparent,
             child: InkWell(
