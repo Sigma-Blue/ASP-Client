@@ -1,4 +1,5 @@
-import 'package:ap/login/loginscreen.dart';
+import 'package:ap/Register/register_page.dart';
+import 'package:ap/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cloudinary_flutter/cloudinary_context.dart';
 import 'package:cloudinary_flutter/image/cld_image.dart';
@@ -19,7 +20,10 @@ class MyApp extends StatelessWidget {
       title: 'Login page',
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen()
+      },
     );
   }
 }

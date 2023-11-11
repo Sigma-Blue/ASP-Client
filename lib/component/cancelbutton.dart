@@ -1,8 +1,8 @@
-import 'package:ap/login/loginscreen.dart';
+import 'package:ap/login/login_page.dart';
 import 'package:flutter/material.dart';
 
-class cancelbutton extends StatelessWidget {
-  const cancelbutton({super.key});
+class CancelButton extends StatelessWidget {
+  const CancelButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class cancelbutton extends StatelessWidget {
             padding: const EdgeInsets.all(5),
             margin: const EdgeInsets.only(left: 80, right: 20),
             decoration: const BoxDecoration(color: Colors.blue),
-            child: Center(
+            child: const Center(
               child: Text(
                 "CANCEL",
                 style: TextStyle(
@@ -22,7 +22,7 @@ class cancelbutton extends StatelessWidget {
             )),
         onTap: () {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (BuildContext context) => LoginScreen()));
+              builder: (BuildContext context) => const LoginScreen()));
         });
   }
 }

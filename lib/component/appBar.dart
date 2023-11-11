@@ -17,7 +17,7 @@ class _appBarState extends State<appBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "ASP",
+                "Alumni Student Platform",
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
