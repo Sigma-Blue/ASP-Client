@@ -1,5 +1,4 @@
-import 'package:ap/Register/otpslide.dart';
-import 'package:ap/login/forgotOtp.dart';
+import 'package:ap/login/forgot_password_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 
@@ -18,7 +17,8 @@ class _ForgotPassEmailState extends State<ForgotPassEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center( // Center the entire column
+      body: Center(
+        // Center the entire column
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center vertically
@@ -29,7 +29,8 @@ class _ForgotPassEmailState extends State<ForgotPassEmail> {
                 child: TextFormField(
                   onChanged: (value) {
                     setState(() {
-                      isEmail = EmailValidator.validate(emailController.text.trim());
+                      isEmail =
+                          EmailValidator.validate(emailController.text.trim());
                       if (isEmail) {
                         regemailTextval = "";
                       } else {
@@ -82,7 +83,8 @@ class _ForgotPassEmailState extends State<ForgotPassEmail> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 30.0, vertical: 10.0),
                   child: Text(
                     "SUBMIT",
                     style: TextStyle(
@@ -100,5 +102,3 @@ class _ForgotPassEmailState extends State<ForgotPassEmail> {
     );
   }
 }
-
-

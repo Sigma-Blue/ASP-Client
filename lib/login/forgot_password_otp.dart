@@ -1,7 +1,5 @@
-import 'package:ap/login/forgotpassword.dart';
-import 'package:ap/login/loginscreen.dart';
+import 'package:ap/login/forgot_password.dart';
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart';
 
 class forgotOtpPopup extends StatefulWidget {
   const forgotOtpPopup({super.key});
@@ -54,13 +52,15 @@ class _forgotOtpPopupState extends State<forgotOtpPopup> {
           ),
           GestureDetector(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(20), // Adjust the radius for desired curvature
+              borderRadius: BorderRadius.circular(
+                  20), // Adjust the radius for desired curvature
               child: Container(
                 padding: const EdgeInsets.all(8),
                 margin: const EdgeInsets.only(top: 50, left: 120, right: 120),
                 decoration: BoxDecoration(
                   color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10), // Apply the same radius for consistency
+                  borderRadius: BorderRadius.circular(
+                      10), // Apply the same radius for consistency
                 ),
                 child: Center(
                   child: Text(
