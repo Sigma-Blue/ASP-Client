@@ -10,7 +10,7 @@ class ForgotPassEmail extends StatefulWidget {
 }
 
 class _ForgotPassEmailState extends State<ForgotPassEmail> {
-  String regemailTextval = '';
+  String regexEmailValue = '';
   bool isEmail = true;
   TextEditingController emailController = TextEditingController();
 
@@ -23,35 +23,35 @@ class _ForgotPassEmailState extends State<ForgotPassEmail> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center vertically
             children: [
-              SizedBox(height: 0),
+              const SizedBox(height: 0),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 50.0),
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
                 child: TextFormField(
                   onChanged: (value) {
                     setState(() {
                       isEmail =
                           EmailValidator.validate(emailController.text.trim());
                       if (isEmail) {
-                        regemailTextval = "";
+                        regexEmailValue = "";
                       } else {
                         isEmail = false;
-                        regemailTextval = "enter a valid emailId";
+                        regexEmailValue = "enter a valid emailId";
                       }
                     });
                   },
                   controller: emailController,
                   decoration: InputDecoration(
-                    errorText: isEmail ? null : regemailTextval,
-                    prefixIcon: Icon(Icons.email),
+                    errorText: isEmail ? null : regexEmailValue,
+                    prefixIcon: const Icon(Icons.email),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.blue,
                         width: 3,
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.black,
                         width: 1,
                       ),
@@ -61,7 +61,7 @@ class _ForgotPassEmailState extends State<ForgotPassEmail> {
                   ),
                 ),
               ),
-              SizedBox(height: 45),
+              const SizedBox(height: 45),
               ElevatedButton(
                 onPressed: () {
                   showModalBottomSheet(
@@ -69,22 +69,22 @@ class _ForgotPassEmailState extends State<ForgotPassEmail> {
                     builder: (BuildContext context) {
                       return Scaffold(
                         appBar: AppBar(
-                          title: Text("OTP"),
+                          title: const Text("OTP"),
                         ),
-                        body: forgotOtpPopup(),
+                        body: const forgotOtpPopup(),
                       );
                     },
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
+                  backgroundColor: Colors.blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 30.0, vertical: 10.0),
+                child: const Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
                   child: Text(
                     "SUBMIT",
                     style: TextStyle(
