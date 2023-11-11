@@ -1,7 +1,12 @@
 import 'package:ap/login/loginscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:cloudinary_flutter/cloudinary_context.dart';
+import 'package:cloudinary_flutter/image/cld_image.dart';
+import 'package:cloudinary_url_gen/cloudinary.dart';
 
 void main() {
+  CloudinaryContext.cloudinary =
+      Cloudinary.fromCloudName(cloudName: "dddnzptni");
   runApp(const MyApp());
 }
 
