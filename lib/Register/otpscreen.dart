@@ -1,5 +1,4 @@
-import 'package:ap/component/appBar.dart';
-import 'package:ap/login/loginscreen.dart';
+import 'package:ap/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -10,8 +9,8 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-  String otpErrorTextval = '';
-  TextEditingController OtpNoController = TextEditingController();
+  String otpErrorValue = '';
+  TextEditingController otpNoController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,68 +29,69 @@ class _OtpScreenState extends State<OtpScreen> {
                 )
               ]),
         ),
-        body: Container(
-          child: Column(children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 100, left: 70, right: 70),
-              child: TextFormField(
-                  onChanged: (value) {
-                    setState(() {
-                      if (OtpNoController.text != "00987") {
-                        otpErrorTextval = "OTP does not match";
-                      } else {
-                        otpErrorTextval = "";
-                      }
-                    });
-                  },
-                  controller: OtpNoController,
-                  decoration: InputDecoration(
-                    errorText: otpErrorTextval.isEmpty ? null : otpErrorTextval,
-                    prefixIcon: Icon(Icons.numbers),
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.blue,
-                        width: 3,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
+        body: Column(children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 100, left: 70, right: 70),
+            child: TextFormField(
+                onChanged: (value) {
+                  setState(() {
+                    if (otpNoController.text != "00987") {
+                      otpErrorValue = "OTP does not match";
+                    } else {
+                      otpErrorValue = "";
+                    }
+                  });
+                },
+                controller: otpNoController,
+                decoration: InputDecoration(
+                  errorText: otpErrorValue.isEmpty ? null : otpErrorValue,
+                  prefixIcon: const Icon(Icons.numbers),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.blue,
+                      width: 3,
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.black,
+                      width: 1,
                     ),
-                    labelText: 'Enter OTP',
-                  )),
-            ),
-        GestureDetector(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30), // Adjust the radius for desired curvature
-            child: Container(
-              padding: const EdgeInsets.all(8),
-              margin: EdgeInsets.only(top: 50, left: 120, right: 120),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(30), // Apply the same radius for consistency
-              ),
-              child: Center(
-                child: Text(
-                  "SUBMIT",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: 'Enter OTP',
+                )),
+          ),
+          GestureDetector(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  30), // Adjust the radius for desired curvature
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                margin: const EdgeInsets.only(top: 50, left: 120, right: 120),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(
+                      30), // Apply the same radius for consistency
+                ),
+                child: const Center(
+                  child: Text(
+                    "SUBMIT",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          onTap: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) => LoginScreen()));
-          },
-        )]),
-    ));
+            onTap: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) => const LoginScreen()));
+            },
+          )
+        ]));
   }
 }

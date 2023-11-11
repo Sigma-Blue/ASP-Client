@@ -1,10 +1,7 @@
-import 'package:ap/Register/otpscreen.dart';
-import 'package:ap/Register/otpslide.dart';
-import 'package:ap/component/socialbutton.dart';
+import 'package:ap/Register/otp_slide.dart';
 // import 'package:ap/Register/register_button.dart';
-import 'package:ap/login/loginscreen.dart';
+import 'package:ap/login/login_page.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:email_validator_flutter/email_validator_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
@@ -122,7 +119,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       labelText: 'Username',
                     )),
               ),
-
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -160,7 +156,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       labelText: 'emailId',
                     )),
               ),
-
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -320,13 +315,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget mybutton() {
     return GestureDetector(
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10), // Adjust the radius for desired curvature
+        borderRadius: BorderRadius.circular(
+            10), // Adjust the radius for desired curvature
         child: Container(
           padding: const EdgeInsets.all(8),
           margin: const EdgeInsets.symmetric(horizontal: 120),
           decoration: BoxDecoration(
             color: Colors.blue,
-            borderRadius: BorderRadius.circular(10), // Apply the same radius for consistency
+            borderRadius: BorderRadius.circular(
+                10), // Apply the same radius for consistency
           ),
           child: Center(
             child: Text(
@@ -376,5 +373,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
       },
     );
   }
-
 }

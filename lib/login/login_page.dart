@@ -1,13 +1,10 @@
 import 'package:ap/Pages/Home/HomeScreen.dart';
-import 'package:ap/Register/registerscreen.dart';
-import 'package:ap/login/forgotpassword.dart';
-import 'package:ap/login/forgotpasswordemail.dart';
+import 'package:ap/Register/register_page.dart';
+import 'package:ap/login/forget_password_email.dart';
 // import 'package:ap/component/socialbutton.dart';
 // import 'package:ap/login/login_button.dart';
 // import 'package:ap/Home/pages/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:ap/component/validation.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
