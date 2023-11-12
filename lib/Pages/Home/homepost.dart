@@ -30,7 +30,7 @@ class _postState extends State<Userpost> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 30,
                       backgroundImage:
                           AssetImage('assets/images/profilepicture.jpg'),

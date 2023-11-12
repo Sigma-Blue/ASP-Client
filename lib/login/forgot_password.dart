@@ -1,19 +1,30 @@
-import 'package:ap/login/login_page.dart';
+// ignore_for_file: avoid_print
+
+import 'package:ap/config.dart';
+import 'package:ap/models/reset_password.dart';
+import 'package:ap/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
+import 'package:snippet_coder_utils/FormHelper.dart';
 
 class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+  // const ForgotPassword({super.key});
+
+  final String email;
+  const ForgotPassword({super.key, required this.email});
 
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  bool isNoPasswordError = true;
+  bool isNoConfirmPasswordError = true;
+
   String regexPasswordErrorValue = '';
   String regexPasswordErrorVal = '';
-  bool isPasswordObscured = false;
-  bool isConfirmPasswordObscured = false;
+  bool isPasswordObscured = true;
+  bool isConfirmPasswordObscured = true;
   bool isSuccess = true;
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPassController = TextEditingController();
@@ -32,9 +43,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             onChanged: (value) {
               setState(() {
                 if (isSuccess == false) {
+                  isNoPasswordError = false;
                   regexPasswordErrorValue =
                       "Enter password with at least a Upper \ncase,lower case,numeric and special character";
                 } else {
+                  isNoPasswordError = true;
                   regexPasswordErrorValue = "";
                 }
               });
@@ -69,8 +82,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   );
                 },
                 icon: Icon(isPasswordObscured
-                    ? Icons.visibility
-                    : Icons.visibility_off),
+                    ? Icons.visibility_off
+                    : Icons.visibility),
               ),
             ),
             obscureText: isPasswordObscured,
@@ -83,8 +96,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               onChanged: (value) {
                 setState(() {
                   if (passwordController.text == confirmPassController.text) {
+                    isNoConfirmPasswordError = true;
                     regexPasswordErrorVal = "";
                   } else {
+                    isNoConfirmPasswordError = false;
                     regexPasswordErrorVal = "Password does not match";
                   }
                 });
@@ -119,8 +134,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     );
                   },
                   icon: Icon(isConfirmPasswordObscured
-                      ? Icons.visibility
-                      : Icons.visibility_off),
+                      ? Icons.visibility_off
+                      : Icons.visibility),
                 ),
               ),
               obscureText: isConfirmPasswordObscured),
@@ -180,11 +195,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const LoginScreen(),
-                  ),
-                );
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/login', (route) => false);
               },
             ),
             GestureDetector(
@@ -212,11 +224,64 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const LoginScreen(),
-                  ),
-                );
+                var password = passwordController.text;
+                var confirmPassword = confirmPassController.text;
+                var emailId = widget.email;
+                print("email in password : $emailId");
+                print("password : $password");
+
+                if (password.isEmpty || confirmPassword.isEmpty) {
+                  FormHelper.showSimpleAlertDialog(
+                    context,
+                    'Invalid Input',
+                    "Enter all the values ",
+                    "OK",
+                    () => {
+                      Navigator.pop(context),
+                    },
+                  );
+                } else if (!isNoPasswordError || !isNoConfirmPasswordError) {
+                  FormHelper.showSimpleAlertDialog(
+                    context,
+                    Config.appName,
+                    "Please Enter Valid Value",
+                    "OK",
+                    () => {Navigator.pop(context)},
+                  );
+                } else {
+                  ResetPasswordModel model =
+                      ResetPasswordModel(email: emailId, password: password);
+
+                  print("Before reset password API call");
+                  ApiService.resetPassword(model).then((res) {
+                    print("After reset password API call");
+                    print("response $res");
+
+                    if (res.status.contains('Success')) {
+                      FormHelper.showSimpleAlertDialog(
+                        context,
+                        Config.appName,
+                        "Password has been Reset",
+                        "Ok",
+                        () => {
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, '/login', (route) => false)
+                        },
+                      );
+                    } else {
+                      FormHelper.showSimpleAlertDialog(
+                        context,
+                        Config.appName,
+                        "Something went wrong , Try Again Later",
+                        "OK",
+                        () => {
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, '/login', (route) => false)
+                        },
+                      );
+                    }
+                  });
+                }
               },
             ),
           ],

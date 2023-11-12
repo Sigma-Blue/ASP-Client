@@ -1,8 +1,6 @@
 //import 'package:alumni_studentpage/utils/userpreferance.dart';
 
 import 'package:ap/Pages/Profile/numbers_widget.dart';
-import 'package:ap/Pages/Profile/About.dart';
-import 'package:ap/Pages/Profile/skills.dart';
 import 'package:flutter/material.dart';
 
 class MyProfile extends StatefulWidget {
@@ -29,7 +27,7 @@ class _MyProfileState extends State<MyProfile> {
           children: [
             buildTop(),
             buildContent(),
-            TabBar(
+            const TabBar(
               indicatorColor: Colors.blue,
               labelColor: Colors.black,
               unselectedLabelColor: Colors.grey,

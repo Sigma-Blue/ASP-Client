@@ -1,5 +1,4 @@
 // import 'package:ap/Pages/Addposts/addImage.dart';
-import 'package:ap/Pages/Addposts/addImage.dart';
 import 'package:ap/Pages/Addposts/addlink.dart';
 import 'package:ap/Pages/Addposts/domain.dart';
 import 'package:flutter/material.dart';
@@ -79,17 +78,17 @@ class _addPostState extends State<addPost> {
                     labelText: 'Caption', border: OutlineInputBorder()),
               ),
               const SizedBox(height: 20),
-              DropdownMenuExample(),
+              const DropdownMenuExample(),
               const SizedBox(
                 height: 20,
               ),
-              AddLink(),
+              const AddLink(),
               const SizedBox(height: 0),
               Padding(
                 padding: const EdgeInsets.only(left: 0.0, right: 230, top: 15),
                 child: Container(
                   child: isLoading
-                      ? CircularProgressIndicator()
+                      ? const CircularProgressIndicator()
                       : TextButton(
                           onPressed: () {
                             pickFile();

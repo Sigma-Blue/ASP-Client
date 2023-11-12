@@ -1,6 +1,12 @@
+// ignore_for_file: avoid_print
+
+import 'package:ap/config.dart';
 import 'package:ap/login/forgot_password_otp.dart';
+import 'package:ap/models/send_mail_model.dart';
+import 'package:ap/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:snippet_coder_utils/FormHelper.dart';
 
 class ForgotPassEmail extends StatefulWidget {
   const ForgotPassEmail({Key? key}) : super(key: key);
@@ -64,17 +70,50 @@ class _ForgotPassEmailState extends State<ForgotPassEmail> {
               const SizedBox(height: 45),
               ElevatedButton(
                 onPressed: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Scaffold(
-                        appBar: AppBar(
-                          title: const Text("OTP"),
-                        ),
-                        body: const forgotOtpPopup(),
-                      );
-                    },
-                  );
+                  var emailId = emailController.text;
+                  if (emailId.isEmpty) {
+                    FormHelper.showSimpleAlertDialog(
+                      context,
+                      'Invalid Input',
+                      "Enter the email ",
+                      "OK",
+                      () => {
+                        Navigator.pop(context),
+                      },
+                    );
+                  } else {
+                    SendMailModel model = SendMailModel(email: emailId);
+
+                    print("Before send email API call");
+
+                    ApiService.sendMail(model).then((res) {
+                      print("After send email API call");
+                      print("response $res");
+
+                      if (res.status.contains('Success')) {
+                        FormHelper.showSimpleAlertDialog(
+                            context,
+                            Config.appName,
+                            "OTP send To your email",
+                            "OK",
+                            () => {
+                                  Navigator.pop(context),
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Scaffold(
+                                          appBar: AppBar(
+                                            title: const Text("OTP"),
+                                          ),
+                                          body: ForgetOtpPopup(
+                                            email: emailId,
+                                          ));
+                                    },
+                                  ),
+                                });
+                      }
+                    });
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,

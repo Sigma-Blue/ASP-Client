@@ -55,9 +55,9 @@ class _commentpopupState extends State<commentpopup> {
                 child: Container(
                   height: 50.0,
                   width: 50.0,
-                  decoration: new BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.blue,
-                      borderRadius: new BorderRadius.all(Radius.circular(50))),
+                      borderRadius: BorderRadius.all(Radius.circular(50))),
                   child: CircleAvatar(
                       radius: 50,
                       backgroundImage: CommentBox.commentImageParser(
@@ -66,10 +66,10 @@ class _commentpopupState extends State<commentpopup> {
               ),
               title: Text(
                 data[i]['name'],
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(data[i]['message']),
-              trailing: Text(data[i]['date'], style: TextStyle(fontSize: 10)),
+              trailing: Text(data[i]['date'], style: const TextStyle(fontSize: 10)),
             ),
           )
       ],
@@ -82,8 +82,8 @@ class _commentpopupState extends State<commentpopup> {
         child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: ElevatedButton(
-                child: Padding(
-                  padding: const EdgeInsets.all(.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(.0),
                   child: Icon(Icons.chat_bubble_outline),
                 ),
                 onPressed: () {
@@ -99,12 +99,11 @@ class _commentpopupState extends State<commentpopup> {
                         // );
                         return Scaffold(
                           appBar: AppBar(
-                            title: Text("Comment Page"),
+                            title: const Text("Comment Page"),
                             backgroundColor: Colors.blue,
                           ),
                           body: Container(
                             child: CommentBox(
-                              child: commentChild(filedata),
                               labelText: 'Write a comment...',
                               errorText: 'Comment cannot be blank',
                               withBorder: false,
@@ -130,8 +129,9 @@ class _commentpopupState extends State<commentpopup> {
                               commentController: commentController,
                               backgroundColor: Colors.blue,
                               textColor: Colors.white,
-                              sendWidget: Icon(Icons.send_sharp,
+                              sendWidget: const Icon(Icons.send_sharp,
                                   size: 30, color: Colors.white),
+                              child: commentChild(filedata),
                             ),
                           ),
                         );
