@@ -1,16 +1,25 @@
-import 'package:ap/login/login_page.dart';
+// ignore_for_file: avoid_print
+
+import 'package:ap/config.dart';
+import 'package:ap/models/verify_otp_model.dart';
+import 'package:ap/services/api_service.dart';
 import 'package:flutter/material.dart';
+import 'package:snippet_coder_utils/FormHelper.dart';
 
 class OtpPopup extends StatefulWidget {
-  const OtpPopup({super.key});
+  // const OtpPopup({super.key});
+  final String email;
 
+  const OtpPopup({super.key, required this.email});
   @override
   State<OtpPopup> createState() => _OtpPopupState();
 }
 
 class _OtpPopupState extends State<OtpPopup> {
+  bool isOtpMatch = true;
+
   String otpErrorValue = '';
-  TextEditingController otpNoController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,18 +28,8 @@ class _OtpPopupState extends State<OtpPopup> {
         Padding(
           padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
           child: TextFormField(
-              onChanged: (value) {
-                setState(() {
-                  if (otpNoController.text != "00987") {
-                    otpErrorValue = "OTP does not match";
-                  } else {
-                    otpErrorValue = "";
-                  }
-                });
-              },
-              controller: otpNoController,
+              controller: otpController,
               decoration: InputDecoration(
-                errorText: otpErrorValue.isEmpty ? null : otpErrorValue,
                 prefixIcon: const Icon(Icons.numbers),
                 border: OutlineInputBorder(
                   borderSide: const BorderSide(
@@ -74,8 +73,56 @@ class _OtpPopupState extends State<OtpPopup> {
             ),
           ),
           onTap: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) => const LoginScreen()));
+            var otp = otpController.text;
+            print("email : $widget.email");
+            print("otp : $otp");
+
+            if (otp.isEmpty) {
+              FormHelper.showSimpleAlertDialog(
+                context,
+                'Invalid Input',
+                "Enter the otp ",
+                "OK",
+                () => {
+                  Navigator.pop(context),
+                },
+              );
+            } else {
+              VerifyOtpModel model =
+                  VerifyOtpModel(otpToken: otp, email: widget.email);
+
+              print("Before login API call");
+              ApiService.verifyOtp(model).then((res) {
+                print("After login API call");
+                print("response $res");
+
+                if (res.status.contains('Success')) {
+                  {
+                    setState(() {
+                      isOtpMatch = true;
+                    });
+                  }
+                  FormHelper.showSimpleAlertDialog(
+                    context,
+                    Config.appName,
+                    "Registration Successful. Please login in to the account :)",
+                    "OK",
+                    () => {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/login', (route) => false)
+                    },
+                  );
+                } else {
+                  FormHelper.showSimpleAlertDialog(
+                    context,
+                    Config.appName,
+                    "OTP is not valid",
+                    "OK",
+                    () => {Navigator.pop(context)},
+                  );
+                }
+              });
+            }
           },
         )
       ]),

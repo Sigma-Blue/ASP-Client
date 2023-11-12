@@ -6,8 +6,8 @@ class Skills extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
+      child: const Padding(
+        padding: EdgeInsets.all(15.0),
         child: Text("this is my skills"),
       ),
     );

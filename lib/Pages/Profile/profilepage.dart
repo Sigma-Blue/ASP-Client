@@ -21,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         elevation: 0,
         title:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(
             "ASP",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -153,7 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
       );
   Widget buildProfileImage() => CircleAvatar(
         radius: profileHeight / 2,
-        backgroundImage: AssetImage(
+        backgroundImage: const AssetImage(
           'assets/images/coverpicture.png',
         ),
       );
