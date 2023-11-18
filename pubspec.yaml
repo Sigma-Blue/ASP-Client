@@ -50,6 +50,7 @@ dependencies:
   cloudinary_url_gen: ^1.0.0
   api_cache_manager: ^1.0.2
   snippet_coder_utils: ^1.0.15
+  flutter_form_builder: ^9.1.1
   
 
 

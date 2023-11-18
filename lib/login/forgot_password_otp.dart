@@ -1,16 +1,24 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, avoid_print
 
+import 'package:ap/config.dart';
 import 'package:ap/login/forgot_password.dart';
+import 'package:ap/models/verify_otp_model.dart';
+import 'package:ap/services/api_service.dart';
 import 'package:flutter/material.dart';
+import 'package:snippet_coder_utils/FormHelper.dart';
 
-class forgotOtpPopup extends StatefulWidget {
-  const forgotOtpPopup({super.key});
+class ForgetOtpPopup extends StatefulWidget {
+  // const ForgetOtpPopup({super.key});
+
+  final String email;
+  const ForgetOtpPopup({super.key, required this.email});
 
   @override
-  State<forgotOtpPopup> createState() => _forgotOtpPopupState();
+  State<ForgetOtpPopup> createState() => _ForgetOtpPopupState();
 }
 
-class _forgotOtpPopupState extends State<forgotOtpPopup> {
+class _ForgetOtpPopupState extends State<ForgetOtpPopup> {
+  bool isOtpMatch = true;
   String otpErrorValue = '';
   TextEditingController otpNoController = TextEditingController();
   @override
@@ -23,9 +31,10 @@ class _forgotOtpPopupState extends State<forgotOtpPopup> {
           child: TextFormField(
               onChanged: (value) {
                 setState(() {
-                  if (otpNoController.text != "00987") {
+                  if (!isOtpMatch) {
                     otpErrorValue = "OTP does not match";
                   } else {
+                    isOtpMatch;
                     otpErrorValue = "";
                   }
                 });
@@ -76,20 +85,77 @@ class _forgotOtpPopupState extends State<forgotOtpPopup> {
             ),
           ),
           onTap: () {
-            showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return Scaffold(
-                  appBar: AppBar(
-                    title: const Text("Reset Password"),
-                  ),
-                  body: const ForgotPassword(),
-                );
-              },
-            );
+            var otp = otpNoController.text;
+            var emailId = widget.email;
+            print("email in otp : $emailId");
+            print("otp : $otp");
+
+            if (otp.isEmpty) {
+              FormHelper.showSimpleAlertDialog(
+                context,
+                'Invalid Input',
+                "Enter the otp ",
+                "OK",
+                () => {
+                  Navigator.pop(context),
+                },
+              );
+            } else {
+              VerifyOtpModel model =
+                  VerifyOtpModel(otpToken: otp, email: widget.email);
+
+              print("Before verify otp API call");
+              ApiService.verifyOtp(model).then((res) {
+                print("After verify otp API call");
+                print("response $res");
+
+                if (res.status.contains('Success')) {
+                  {
+                    setState(() {
+                      isOtpMatch = true;
+                    });
+                  }
+
+                  Navigator.pop(context);
+
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Scaffold(
+                        appBar: AppBar(
+                          title: const Text("Reset Password"),
+                        ),
+                        body: ForgotPassword(
+                          email: emailId,
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  FormHelper.showSimpleAlertDialog(
+                    context,
+                    Config.appName,
+                    "OTP is not valid",
+                    "OK",
+                    () => {Navigator.pop(context), Navigator.of(context)},
+                  );
+                }
+              });
+            }
           },
         ),
       ]),
     ));
   }
 }
+
+//  FormHelper.showSimpleAlertDialog(
+//                     context,
+//                     Config.appName,
+//                     "Password Reset Successful. Please login in to the account :)",
+//                     "OK",
+//                     () => {
+//                       Navigator.pushNamedAndRemoveUntil(
+//                           context, '/login', (route) => false)
+//                     },
+//                   );
