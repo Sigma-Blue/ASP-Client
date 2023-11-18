@@ -1,11 +1,8 @@
-// import 'package:ap/Pages/Addposts/addImage.dart';
-// import 'package:ap/Pages/Home/comments.dart';
 import 'package:flutter/material.dart';
 import 'package:comment_box/comment/comment.dart';
 
 class commentpopup extends StatefulWidget {
   const commentpopup({super.key});
-
   @override
   State<commentpopup> createState() => _commentpopupState();
 }
@@ -49,7 +46,6 @@ class _commentpopupState extends State<commentpopup> {
             child: ListTile(
               leading: GestureDetector(
                 onTap: () async {
-                  // Display the image in large form.
                   print("Comment Clicked");
                 },
                 child: Container(
@@ -69,7 +65,8 @@ class _commentpopupState extends State<commentpopup> {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(data[i]['message']),
-              trailing: Text(data[i]['date'], style: const TextStyle(fontSize: 10)),
+              trailing:
+                  Text(data[i]['date'], style: const TextStyle(fontSize: 10)),
             ),
           )
       ],
@@ -90,13 +87,6 @@ class _commentpopupState extends State<commentpopup> {
                   showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        // return SizedBox(
-                        //   height: 800,
-                        //   child: Center(
-                        //       child: Column(
-                        //     children: [],
-                        //   )),
-                        // );
                         return Scaffold(
                           appBar: AppBar(
                             title: const Text("Comment Page"),

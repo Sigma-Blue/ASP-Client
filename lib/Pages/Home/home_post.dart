@@ -51,7 +51,6 @@ class _postState extends State<Userpost> {
           padding: const EdgeInsets.all(0),
           child: Image.asset("assets/images/coverpicture.png"),
         ),
-
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -72,7 +71,6 @@ class _postState extends State<Userpost> {
                             }
                             print(click);
                           });
-
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(left: 0, right: .0),
@@ -134,17 +132,6 @@ class _postState extends State<Userpost> {
             )
           ]),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.only(left: 16.0, top: 6.0),
-        //   child: RichText(
-        //       text: TextSpan(children: [
-        //     TextSpan(
-        //         text: name,
-        //         style: TextStyle(
-        //             color: Colors.black, fontWeight: FontWeight.bold)),
-        //     TextSpan(text: caption, style: TextStyle(color: Colors.black)),
-        //   ])),
-        // )
       ],
     );
   }

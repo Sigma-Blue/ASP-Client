@@ -2,8 +2,12 @@ import 'package:ap/Pages/Home/HomePage.dart';
 import 'package:ap/Register/register_page.dart';
 import 'package:ap/login/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:cloudinary_flutter/cloudinary_context.dart';
+import 'package:cloudinary_url_gen/cloudinary.dart';
 
 void main() {
+  CloudinaryContext.cloudinary =
+      Cloudinary.fromCloudName(cloudName: "dddnzptni");
   runApp(const MyApp());
 }
 

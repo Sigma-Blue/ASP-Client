@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class cloudinaryimage extends StatelessWidget {
-  const cloudinaryimage({super.key});
+class Experience extends StatelessWidget {
+  const Experience({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,11 @@
-//import 'package:alumni_studentpage/utils/userpreferance.dart';
-
 import 'package:ap/Pages/Profile/numbers_widget.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
   final String name;
-  final String Usertype;
-  const ProfilePage({super.key, required this.name, required this.Usertype});
+  final String usertype;
+  const ProfilePage({super.key, required this.name, required this.usertype});
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -45,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
           style: const TextStyle(fontSize: 40, color: Colors.black),
         ),
         Text(
-          widget.Usertype,
+          widget.usertype,
           style: const TextStyle(fontSize: 20, color: Colors.black),
         ),
         const SizedBox(height: 16),
@@ -62,15 +60,6 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(width: 10),
               buildSocialIcon(FontAwesomeIcons.linkedin),
               const SizedBox(width: 10),
-              // Row(
-              //   children: [
-              //     IconButton(
-              //       iconSize: 16,
-              //       onPressed: () {},
-              //       icon: const Icon(Icons.edit),
-              //     )
-              //   ],
-              // ),
             ],
           ),
         ),

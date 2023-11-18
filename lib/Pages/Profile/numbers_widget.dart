@@ -16,12 +16,10 @@ class NumbersWidget extends StatelessWidget {
         ],
       );
 }
-
 Widget buildDivider() => const SizedBox(
       height: 24,
       child: VerticalDivider(),
     );
-
 Widget buildButton({
   required String text,
   required int value,
@@ -42,3 +40,4 @@ Widget buildButton({
         ],
       ),
     );
+ 
