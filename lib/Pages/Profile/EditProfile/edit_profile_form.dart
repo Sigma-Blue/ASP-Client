@@ -1,16 +1,21 @@
 import 'dart:io';
-
+import 'package:ap/Pages/Profile/myprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddPostForm extends StatefulWidget {
-  const AddPostForm({super.key});
+class EditProfileForm extends StatefulWidget {
+  const EditProfileForm({super.key});
   @override
-  _AddPostFormState createState() => _AddPostFormState();
+  _EditProfileFormState createState() => _EditProfileFormState();
 }
 
-class _AddPostFormState extends State<AddPostForm> {
-  TextEditingController descriptionController = TextEditingController();
+class _EditProfileFormState extends State<EditProfileForm> {
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController gitHubController = TextEditingController();
+  TextEditingController instagramController = TextEditingController();
+  TextEditingController twitterController = TextEditingController();
+  TextEditingController linkedInController = TextEditingController();
   TextEditingController aboutController = TextEditingController();
   List<String> links = [];
   File? _imageFile;
@@ -33,20 +38,28 @@ class _AddPostFormState extends State<AddPostForm> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Text(
-              "Enter the description for your Post",
+              "Enter your First Name here",
               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
             TextFormField(
-              controller: descriptionController,
+              controller: firstNameController,
               decoration: const InputDecoration(
-                  labelText: 'Description', border: OutlineInputBorder()),
-              minLines: 1,
-              maxLines: 3,
+                  labelText: 'FirstName', border: OutlineInputBorder()),
+            ),
+            const Text(
+              "Enter your Last Name here",
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              controller: lastNameController,
+              decoration: const InputDecoration(
+                  labelText: 'LastName', border: OutlineInputBorder()),
             ),
             const SizedBox(height: 16),
             const Text(
-              "Enter the detailed about for your Posts here",
+              "Enter the detailed about for your Profile here",
               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
@@ -59,7 +72,51 @@ class _AddPostFormState extends State<AddPostForm> {
             ),
             const SizedBox(height: 16),
             const Text(
-              "share the links of your Post",
+              "share your GitHub Link here",
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              controller: gitHubController,
+              decoration: const InputDecoration(
+                  labelText: 'GitHub Link', border: OutlineInputBorder()),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              "share your LinkedIn Link here",
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              controller: linkedInController,
+              decoration: const InputDecoration(
+                  labelText: 'LinkedIn Link', border: OutlineInputBorder()),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              "share your Instagram Link here",
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              controller: instagramController,
+              decoration: const InputDecoration(
+                  labelText: 'Instagram Link', border: OutlineInputBorder()),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              "share your Twitter Link here",
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              controller: twitterController,
+              decoration: const InputDecoration(
+                  labelText: 'Twitter Link', border: OutlineInputBorder()),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              "share the other links if you wish to want to share in your profile",
               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
@@ -105,7 +162,7 @@ class _AddPostFormState extends State<AddPostForm> {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  "Upload Picture here",
+                  "Upload Profile Picture here",
                   style: TextStyle(
                       color: Colors.blue, fontWeight: FontWeight.bold),
                 ),
@@ -149,7 +206,9 @@ class _AddPostFormState extends State<AddPostForm> {
               padding: const EdgeInsets.only(left: 120, right: 120),
               child: ElevatedButton(
                 onPressed: () {
-                  // Add submit logic here
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          const MyProfile(name: "'", usertype: " '")));
                 },
                 child: const Text('Submit'),
               ),

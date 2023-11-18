@@ -1,3 +1,4 @@
+import 'package:ap/Pages/Addposts/sample.dart';
 import 'package:flutter/material.dart';
 
 class AddLink extends StatefulWidget {
@@ -7,41 +8,72 @@ class AddLink extends StatefulWidget {
   State<AddLink> createState() => _AddLinkState();
 }
 
-List links = [];
-
 class _AddLinkState extends State<AddLink> {
-  TextEditingController postlinkcontroller = TextEditingController();
+  TextEditingController _textFieldController = TextEditingController();
+  List<String> itemList = [];
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Add the links here'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-      children: [
-        TextFormField(
-          controller: postlinkcontroller,
-          decoration: const InputDecoration(
-              labelText: 'Link', border: OutlineInputBorder()),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 0, right: 260),
-          child: ElevatedButton(
-              onPressed: () {
-                print(postlinkcontroller.text);
-                links.add(postlinkcontroller.text);
-                print(links);
-              },
-              child: const Padding(
-                padding: EdgeInsets.all(8),
-                child: Text("Add Link"),
-              )),
-        ),
-        for (var i = 0; i < links.length; i++)
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 0),
-              child: Text(links[i]),
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _textFieldController,
+                    decoration: const InputDecoration(
+                      hintText: 'Enter Links',
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8.0),
+                ElevatedButton(
+                  onPressed: () {
+                    _addItemToList();
+                  },
+                  child: Text('Add'),
+                ),
+              ],
             ),
-          ),
-      ],
-    ));
-  }  
+            const SizedBox(height: 16.0),
+            Expanded(
+              child: ListView.builder(
+                itemCount: itemList.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(itemList[index]),
+                  );
+                },
+              ),
+            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.of(context).pushReplacement(
+            //       MaterialPageRoute(
+            //           builder: (BuildContext context) => const AddPost()),
+            //     );
+            //   },
+            //   child: const Text("Add Link"),
+            // ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _addItemToList() {
+    String newItem = _textFieldController.text.trim();
+    if (newItem.isNotEmpty) {
+      setState(() {
+        itemList.add(newItem);
+        _textFieldController.clear();
+      });
+    }
+  }
 }

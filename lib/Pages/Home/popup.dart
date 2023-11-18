@@ -1,15 +1,10 @@
-// import 'package:ap/Pages/Addposts/addImage.dart';
-// import 'package:ap/Pages/Home/comments.dart';
 import 'package:flutter/material.dart';
 import 'package:comment_box/comment/comment.dart';
-
 class commentpopup extends StatefulWidget {
   const commentpopup({super.key});
-
   @override
   State<commentpopup> createState() => _commentpopupState();
 }
-
 class _commentpopupState extends State<commentpopup> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController commentController = TextEditingController();
@@ -19,20 +14,17 @@ class _commentpopupState extends State<commentpopup> {
       'pic': 'https://picsum.photos/300/30',
       'message': 'I love to code',
       'date': '2021-01-01 12:00:00'
-    },
-    {
+    }, {
       'name': 'Biggi Man',
       'pic': 'https://picsum.photos/300/30',
       'message': 'Very cool',
       'date': '2021-01-01 12:00:00'
-    },
-    {
+    }, {
       'name': 'Tunde Martins',
       'pic': 'https://picsum.photos/300/30',
       'message': 'Very cool',
       'date': '2021-01-01 12:00:00'
-    },
-    {
+    }, {
       'name': 'Biggi Man',
       'pic': 'https://picsum.photos/300/30',
       'message': 'Very cool',
@@ -49,15 +41,14 @@ class _commentpopupState extends State<commentpopup> {
             child: ListTile(
               leading: GestureDetector(
                 onTap: () async {
-                  // Display the image in large form.
                   print("Comment Clicked");
                 },
                 child: Container(
                   height: 50.0,
                   width: 50.0,
-                  decoration: new BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.blue,
-                      borderRadius: new BorderRadius.all(Radius.circular(50))),
+                      borderRadius: BorderRadius.all(Radius.circular(50))),
                   child: CircleAvatar(
                       radius: 50,
                       backgroundImage: CommentBox.commentImageParser(
@@ -66,10 +57,10 @@ class _commentpopupState extends State<commentpopup> {
               ),
               title: Text(
                 data[i]['name'],
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style:const  TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(data[i]['message']),
-              trailing: Text(data[i]['date'], style: TextStyle(fontSize: 10)),
+              trailing: Text(data[i]['date'], style: const TextStyle(fontSize: 10)),
             ),
           )
       ],
@@ -82,29 +73,21 @@ class _commentpopupState extends State<commentpopup> {
         child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: ElevatedButton(
-                child: Padding(
-                  padding: const EdgeInsets.all(.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(.0),
                   child: Icon(Icons.chat_bubble_outline),
                 ),
                 onPressed: () {
                   showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        // return SizedBox(
-                        //   height: 800,
-                        //   child: Center(
-                        //       child: Column(
-                        //     children: [],
-                        //   )),
-                        // );
                         return Scaffold(
                           appBar: AppBar(
-                            title: Text("Comment Page"),
+                            title: const Text("Comment Page"),
                             backgroundColor: Colors.blue,
                           ),
                           body: Container(
                             child: CommentBox(
-                              child: commentChild(filedata),
                               labelText: 'Write a comment...',
                               errorText: 'Comment cannot be blank',
                               withBorder: false,
@@ -130,8 +113,9 @@ class _commentpopupState extends State<commentpopup> {
                               commentController: commentController,
                               backgroundColor: Colors.blue,
                               textColor: Colors.white,
-                              sendWidget: Icon(Icons.send_sharp,
+                              sendWidget: const Icon(Icons.send_sharp,
                                   size: 30, color: Colors.white),
+                              child: commentChild(filedata),
                             ),
                           ),
                         );

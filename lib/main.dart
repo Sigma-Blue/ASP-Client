@@ -2,7 +2,6 @@ import 'package:ap/Register/register_page.dart';
 import 'package:ap/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cloudinary_flutter/cloudinary_context.dart';
-import 'package:cloudinary_flutter/image/cld_image.dart';
 import 'package:cloudinary_url_gen/cloudinary.dart';
 
 void main() {

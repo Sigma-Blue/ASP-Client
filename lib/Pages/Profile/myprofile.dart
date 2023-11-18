@@ -1,35 +1,36 @@
-//import 'package:alumni_studentpage/utils/userpreferance.dart';
-
 import 'package:ap/Pages/Profile/numbers_widget.dart';
-import 'package:ap/Pages/Profile/About.dart';
-import 'package:ap/Pages/Profile/skills.dart';
 import 'package:flutter/material.dart';
 
 class MyProfile extends StatefulWidget {
   final String name;
-  final String Usertype;
-  const MyProfile({super.key, required this.name, required this.Usertype});
+  final String usertype;
+  const MyProfile({super.key, required this.name, required this.usertype});
   @override
   _MyProfileState createState() => _MyProfileState();
 }
 
 class _MyProfileState extends State<MyProfile> {
-  // bool isAbout = true;
-  // bool isSkills = false;
   bool isExperience = false;
   final double coverHeight = 210;
   final double profileHeight = 124;
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 10,
+    return Scaffold(
+        body: DefaultTabController(
+      length: 4,
       child: Scaffold(
         body: ListView(
           padding: EdgeInsets.zero,
           children: [
             buildTop(),
             buildContent(),
-            TabBar(
+            // ProfileBody(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(widget.name),
+            ),
+            Text(widget.usertype),
+            const TabBar(
               indicatorColor: Colors.blue,
               labelColor: Colors.black,
               unselectedLabelColor: Colors.grey,
@@ -38,37 +39,21 @@ class _MyProfileState extends State<MyProfile> {
                   text: "ABOUT",
                 ),
                 Tab(
-                  text: "EXPERIENCE",
+                  text: "SKILLS",
                 ),
                 Tab(
-                  text: "SKILLS",
+                  text: "EXPERIENCE",
                 ),
                 Tab(
                   text: "EDUCATION",
                 ),
               ],
             ),
-            // Expanded(
-            //     child: TabBarView(children: [
-            //   About(),
-            //   About(),
-            //   About(),
-            //   About(),
-            // ]))
           ],
         ),
       ),
-    );
+    ));
   }
-
-  Widget buildAbout() => Container(
-        child: const Column(
-          children: [
-            SizedBox(height: 40),
-            Text("This is the details about the user")
-          ],
-        ),
-      );
 
   Widget buildContent() => Container(
         child: const Column(children: [
@@ -78,7 +63,7 @@ class _MyProfileState extends State<MyProfile> {
           //child:
         ]),
       );
-  //) //Row
+
 
   Widget buildTop() {
     final bottom = profileHeight / 2;

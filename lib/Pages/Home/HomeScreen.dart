@@ -1,19 +1,8 @@
-// import 'package:ap/Pages/Addposts/addImage.dart';
-import 'package:ap/Pages/Addposts/addpost.dart';
-import 'package:ap/Pages/Addposts/addpostform.dart';
-import 'package:ap/Pages/Addposts/cloudinaryimage.dart';
-import 'package:ap/Pages/Files/files.dart';
-// import 'package:ap/Pages/Addposts/addpostform.dart';
-// import 'package:ap/Pages/Addposts/domain.dart';
-// import 'package:ap/Pages/Files/files.dart';
 import 'package:ap/Pages/Home/home.dart';
+import 'package:ap/Pages/Addposts/AddPost.dart';
+import 'package:ap/Pages/Profile/EditProfile/Edit_Profile.dart';
 import 'package:ap/Pages/Profile/myprofile.dart';
-// import 'package:ap/Pages/Profile/account.dart';
 import 'package:ap/Pages/Profile/profilepage.dart';
-// import 'package:ap/Pages/Profile/profile.dart';
-import 'package:ap/Pages/Search/search.dart';
-import 'package:cloudinary_url_gen/cloudinary.dart';
-// import 'package:ap/Pages/Home/comments.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,16 +20,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _children = [
-    Home(),
-    Search(Username: "Gokulramana", Usertype: "Alumni"),
-    cloudinary(),
-    // ProfilePage(name: "Swetha", Usertype: "Student"),
-    addPost(),
-    MyProfile(name: "Monikashri", Usertype: "Alumni")
-    // ProfilePage(
-    //   name: 'Monikashri',
-    //   Usertype: 'Student',
-    // ),
+    const Home(),
+    // const Search(Username: "Gokulramana", Usertype: "Alumni"),
+    const EditProfile(),
+    const ProfilePage(name: "Swetha", usertype: "Student"),
+    const AddPost(),
+    const MyProfile(name: "Monikashri", usertype: "Alumni")
   ];
   @override
   Widget build(BuildContext context) {

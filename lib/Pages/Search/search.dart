@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Search extends StatelessWidget {
-  final String Username;
-  final String Usertype;
-  const Search({super.key, required this.Username, required this.Usertype});
+  final String username;
+  final String usertype;
+  const Search({super.key, required this.username, required this.usertype});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +32,8 @@ class Search extends StatelessWidget {
               radius: 25,
               backgroundImage: NetworkImage(""),
             ),
-            title: Text(Username),
-            subtitle: Text(Usertype),
+            title: Text(username),
+            subtitle: Text(usertype),
           );
         },
       ),

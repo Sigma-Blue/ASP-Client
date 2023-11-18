@@ -30,7 +30,7 @@ class _postState extends State<Userpost> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 30,
                       backgroundImage:
                           AssetImage('assets/images/profilepicture.jpg'),
@@ -49,7 +49,11 @@ class _postState extends State<Userpost> {
             ),
         Padding(
           padding: const EdgeInsets.all(0),
-          child: Image.asset("assets/images/coverpicture.png"),
+          child: Image.asset(
+            "assets/images/coverpicture.png",
+            width: double.infinity,
+            // height: double.maxFinite,
+          ),
         ),
 
         Padding(
@@ -72,7 +76,6 @@ class _postState extends State<Userpost> {
                             }
                             print(click);
                           });
-
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(left: 0, right: .0),
@@ -134,17 +137,6 @@ class _postState extends State<Userpost> {
             )
           ]),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.only(left: 16.0, top: 6.0),
-        //   child: RichText(
-        //       text: TextSpan(children: [
-        //     TextSpan(
-        //         text: name,
-        //         style: TextStyle(
-        //             color: Colors.black, fontWeight: FontWeight.bold)),
-        //     TextSpan(text: caption, style: TextStyle(color: Colors.black)),
-        //   ])),
-        // )
       ],
     );
   }
