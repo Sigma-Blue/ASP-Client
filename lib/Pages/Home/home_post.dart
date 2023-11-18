@@ -5,12 +5,12 @@ class Userpost extends StatefulWidget {
   final String name;
   final String caption;
   int likes;
-  Userpost(
-      {Key? key,
-      required this.caption,
-      required this.likes,
-      required this.name})
-      : super(key: key);
+  Userpost({
+    Key? key,
+    required this.name,
+    required this.likes,
+    required this.caption,
+  }) : super(key: key);
 
   @override
   _postState createState() => _postState();

@@ -1,4 +1,5 @@
 import 'package:ap/Pages/Home/home_post.dart';
+import 'package:ap/Pages/Home/view_post.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -28,8 +29,21 @@ class Home extends StatelessWidget {
               child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Userpost(
-                        name: 'Gokul', caption: "First post", likes: 245);
+                    return GestureDetector(
+                      child: Userpost(
+                          name: 'Gokul', likes: 199, caption: "Heyy Hii"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ViewPostsPage(
+                                  username: "gokul",
+                                  description: "kgbd",
+                                  about:
+                                      "lglighdagdklgbadkgbd g.kdsbgkidsbg.dksgbsd.kgbsdg")),
+                        );
+                      },
+                    );
                   }))
         ],
       ),
