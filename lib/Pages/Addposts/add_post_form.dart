@@ -44,6 +44,7 @@ class _AddPostFormState extends State<AddPostForm> {
               minLines: 1,
               maxLines: 3,
             ),
+            const SizedBox(height: 16),
             const DropdownMenuExample(),
             const SizedBox(height: 16),
             const Text(

@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print
-
 import 'dart:convert';
-
 import 'package:ap/config.dart';
 import 'package:ap/models/login_request_model.dart';
 import 'package:ap/models/login_response_model.dart';

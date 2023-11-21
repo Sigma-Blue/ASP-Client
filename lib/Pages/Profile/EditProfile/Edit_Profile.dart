@@ -1,5 +1,5 @@
 import 'package:ap/Pages/Profile/EditProfile/edit_profile_form.dart';
-import 'package:ap/Pages/Profile/my_profile.dart';
+import 'package:ap/Pages/Profile/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 class EditProfile extends StatelessWidget {
@@ -14,8 +14,7 @@ class EditProfile extends StatelessWidget {
               icon: const Icon(Icons.cancel),
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        const MyProfile(name: "", usertype: "")));
+                    builder: (BuildContext context) => MyProfilePage()));
               },
             ),
           ],
