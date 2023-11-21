@@ -1,8 +1,7 @@
 import 'package:ap/Pages/Home/home.dart';
 import 'package:ap/Pages/Addposts/add_post.dart';
 import 'package:ap/Pages/Profile/EditProfile/Edit_Profile.dart';
-import 'package:ap/Pages/Profile/my_profile.dart';
-import 'package:ap/Pages/Profile/profile_page.dart';
+import 'package:ap/Pages/Profile/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,12 +19,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _children = [
-    const Home(),
+    Home(),
     // const Search(Username: "Gokulramana", Usertype: "Alumni"),
     const EditProfile(),
-    const ProfilePage(name: "Swetha", usertype: "Student"),
+    MyProfilePage(),
     const AddPost(),
-    const MyProfile(name: "Monikashri", usertype: "Alumni")
+    MyProfilePage()
   ];
   @override
   Widget build(BuildContext context) {

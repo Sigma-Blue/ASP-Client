@@ -1,5 +1,5 @@
 import 'package:ap/Pages/Addposts/add_post_form.dart';
-import 'package:ap/Pages/Home/Home_Screen.dart';
+import 'package:ap/Pages/Home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class AddPost extends StatelessWidget {
