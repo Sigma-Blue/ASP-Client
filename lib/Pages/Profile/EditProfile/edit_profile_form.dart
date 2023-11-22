@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:ap/Pages/Profile/my_profile.dart';
+import 'package:ap/Pages/Profile/ProfilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -207,8 +207,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          const MyProfile(name: "'", usertype: " '")));
+                      builder: (BuildContext context) => MyProfilePage()));
                 },
                 child: const Text('Submit'),
               ),

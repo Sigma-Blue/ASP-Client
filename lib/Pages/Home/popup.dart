@@ -12,27 +12,31 @@ class _commentpopupState extends State<commentpopup> {
   final TextEditingController commentController = TextEditingController();
   List filedata = [
     {
-      'name': 'Chuks Okwuenu',
-      'pic': 'https://picsum.photos/300/30',
-      'message': 'I love to code',
+      'name': 'Leonal',
+      'pic':
+          'https://imgs.search.brave.com/7S0uXqeyoNg8enwoSaZK5rPTrXoV-L55tOZ0-e91FWA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/aXN0b2NrcGhvdG8u/Y29tL3Jlc291cmNl/cy9pbWFnZXMvUGhv/dG9GVExQL0hlYWx0/aGNhcmVNZWRpY2lu/ZS05NDQ4ODU0NjIu/anBn',
+      'message': 'Welcome !',
       'date': '2021-01-01 12:00:00'
     },
     {
-      'name': 'Biggi Man',
-      'pic': 'https://picsum.photos/300/30',
-      'message': 'Very cool',
+      'name': 'John',
+      'pic':
+          'https://imgs.search.brave.com/n0k4nzenoyGEBdflCPOZT6UJ4crU8_dUH9VHqf62eNM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/aXN0b2NrcGhvdG8u/Y29tL3Jlc291cmNl/cy9pbWFnZXMvUGhv/dG9GVExQL1AyLU5P/Vi1pU3RvY2stMTQ3/OTU5MTg2Ni5qcGc',
+      'message': 'Heyy Congrats !!',
       'date': '2021-01-01 12:00:00'
     },
     {
-      'name': 'Tunde Martins',
-      'pic': 'https://picsum.photos/300/30',
-      'message': 'Very cool',
+      'name': 'Martins',
+      'pic':
+          'https://imgs.search.brave.com/n0k4nzenoyGEBdflCPOZT6UJ4crU8_dUH9VHqf62eNM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/aXN0b2NrcGhvdG8u/Y29tL3Jlc291cmNl/cy9pbWFnZXMvUGhv/dG9GVExQL1AyLU5P/Vi1pU3RvY2stMTQ3/OTU5MTg2Ni5qcGc',
+      'message': 'Good Job',
       'date': '2021-01-01 12:00:00'
     },
     {
-      'name': 'Biggi Man',
-      'pic': 'https://picsum.photos/300/30',
-      'message': 'Very cool',
+      'name': 'John',
+      'pic':
+          'https://imgs.search.brave.com/n0k4nzenoyGEBdflCPOZT6UJ4crU8_dUH9VHqf62eNM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/aXN0b2NrcGhvdG8u/Y29tL3Jlc291cmNl/cy9pbWFnZXMvUGhv/dG9GVExQL1AyLU5P/Vi1pU3RvY2stMTQ3/OTU5MTg2Ni5qcGc',
+      'message': 'Nice',
       'date': '2021-01-01 12:00:00'
     },
   ];
@@ -102,7 +106,7 @@ class _commentpopupState extends State<commentpopup> {
                                   print(commentController.text);
                                   setState(() {
                                     var value = {
-                                      'name': 'New User',
+                                      'name': 'Username',
                                       'pic': 'https://picsum.photos/300/30',
                                       'message': commentController.text,
                                       'date': '2021-01-01 12:00:00'

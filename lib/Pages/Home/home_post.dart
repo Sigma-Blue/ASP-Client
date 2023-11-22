@@ -1,4 +1,5 @@
 import 'package:ap/Pages/Home/popup.dart';
+import 'package:ap/Pages/Profile/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 class Userpost extends StatefulWidget {
@@ -21,19 +22,21 @@ class _postState extends State<Userpost> {
   bool save = false;
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SingleChildScrollView(
+        child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-            padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
                     const CircleAvatar(
-                      radius: 30,
+                      radius: 25,
                       backgroundImage:
-                          AssetImage('assets/images/profilepicture.jpg'),
+                          AssetImage('assets/images/coverpicture.png'),
                     ),
                     const SizedBox(
                       width: 10,
@@ -43,18 +46,33 @@ class _postState extends State<Userpost> {
                             fontWeight: FontWeight.bold, fontSize: 17)),
                   ]),
                   const Icon(Icons.more_vert)
-                ])
-            // Profile Photo
-
-            ),
+                ]),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyProfilePage()),
+              );
+            },
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.all(0),
-          child: Image.asset("assets/images/coverpicture.png"),
+          child: Container(
+            width: double.infinity,
+            height: 200.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black),
+            ),
+            child: Image.asset(
+              'assets/images/coverpicture.png',
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -106,7 +124,7 @@ class _postState extends State<Userpost> {
                         size: 25,
                       ),
                     )),
-              )) // icon: Icon(Icons.bookmark_add_outlined)),
+              ))
             ],
           ),
         ),
@@ -120,7 +138,7 @@ class _postState extends State<Userpost> {
           ]),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 16.0, top: 8.0),
+          padding: const EdgeInsets.only(left: 16.0, top: 8.0, right: 8),
           child: Row(children: [
             Text(
               "${widget.name} ",
@@ -129,10 +147,13 @@ class _postState extends State<Userpost> {
             Text(
               widget.caption,
               style: const TextStyle(fontSize: 17),
-            )
+            ),
           ]),
         ),
+        const SizedBox(
+          height: 15,
+        )
       ],
-    );
+    ));
   }
 }

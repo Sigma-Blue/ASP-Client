@@ -10,7 +10,12 @@ class ViewPostsPage extends StatelessWidget {
       required this.description,
       required this.about});
 
-  List linksList = ['a', 'b', 'c', 'd'];
+  List linksList = [
+    'https://github.com/ramana1718',
+    'https://trello.com/b/aiZ6Cfza/sigma-blue',
+    'https://www.linkedin.com/in/gokul-ramana-a89287247/',
+    'https://github.com/ramana1718',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,14 +24,12 @@ class ViewPostsPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.exit_to_app),
-            onPressed: () {
-              // Add exit/logout logic here
-            },
+            onPressed: () {},
           ),
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,8 +37,7 @@ class ViewPostsPage extends StatelessWidget {
               children: [
                 const CircleAvatar(
                   radius: 30.0,
-                  backgroundImage:
-                      AssetImage('assets/images/profilepicture.jpg'),
+                  backgroundImage: AssetImage('assets/images/coverpicture.png'),
                 ),
                 const SizedBox(width: 16.0),
                 Column(
@@ -55,10 +57,15 @@ class ViewPostsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             Container(
-              height: 200.0,
               width: double.infinity,
-              color: Colors.grey,
-              child: Image.asset("assets/images/coverpicture.png"),
+              height: 200.0,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+              ),
+              child: Image.asset(
+                'assets/images/coverpicture.png',
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(height: 16.0),
             const Text(
@@ -73,7 +80,6 @@ class ViewPostsPage extends StatelessWidget {
               description,
               style: const TextStyle(
                 fontSize: 16.0,
-                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8.0),
@@ -86,7 +92,6 @@ class ViewPostsPage extends StatelessWidget {
               about,
               style: const TextStyle(
                 fontSize: 16.0,
-                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8.0),
@@ -101,7 +106,14 @@ class ViewPostsPage extends StatelessWidget {
               shrinkWrap: true,
               itemCount: linksList.length,
               itemBuilder: (context, index) {
-                return Text(linksList[index]);
+                return GestureDetector(
+                    child: Text(
+                  linksList[index],
+                  style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.blue,
+                      decorationStyle: TextDecorationStyle.dashed),
+                ));
               },
             ),
           ],
