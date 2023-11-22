@@ -24,6 +24,7 @@ class ApiService {
     };
 
     var url = Uri.http(Config.apiUrl, Config.registerApi);
+    print(url);
 
     try {
       var response = await client.post(
@@ -32,8 +33,15 @@ class ApiService {
         body: jsonEncode(model.toJson()),
       );
 
-      return responseJson(response.body);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return responseJson(response.body);
+      } else {
+        print(
+            "Error during registration. Status Code: ${response.statusCode}, Body: ${response.body}");
+        throw Exception('Error during registration');
+      }
     } catch (error) {
+      print("Exception during registration: $error");
       throw Exception('Error while trying to register $error');
     }
   }
@@ -128,7 +136,7 @@ class ApiService {
         headers: requestHeaders,
         body: jsonEncode(model.toJson()),
       );
-
+      print("response: ${response.body}");
       return responseJson(response.body);
     } catch (error) {
       throw Exception('Error while trying to verify otp $error');
