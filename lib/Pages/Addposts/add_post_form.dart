@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:ap/Pages/Addposts/drop_down_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 class AddPostForm extends StatefulWidget {
   const AddPostForm({super.key});
@@ -22,6 +24,24 @@ class _AddPostFormState extends State<AddPostForm> {
     setState(() {
       if (pickedFile != null) _imageFile = File(pickedFile.path);
     });
+  }
+
+  Future<void> _uploadImage() async {
+    final url =
+        Uri.parse('https://api.cloudinary.com/v1_1/dgs7fbmta/image/upload');
+    final request = http.MultipartRequest('POST', url)
+      ..fields['upload_preset'] = 'alumni_student_platform'
+      ..files.add(await http.MultipartFile.fromPath('file', _imageFile!.path));
+    final response = await request.send();
+    if (response.statusCode == 200) {
+      final responseData = await response.stream.toBytes();
+      final responseString = utf8.decode(responseData);
+      final jsonMap = jsonDecode(responseString);
+      setState(() {
+        final url = jsonMap['url'];
+        _imageUrl = url;
+      });
+    }
   }
 
   @override
@@ -135,7 +155,8 @@ class _AddPostFormState extends State<AddPostForm> {
                       if (_imageFile != null) ...[
                         Image.file(_imageFile!),
                         ElevatedButton(
-                            onPressed: () {}, child: const Text('upload'))
+                            onPressed: _uploadImage,
+                            child: const Text('upload'))
                       ],
                       if (_imageUrl != null) ...[
                         Image.network(_imageUrl!),
