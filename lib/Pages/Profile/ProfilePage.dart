@@ -37,43 +37,44 @@ class MyProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             buildTop(),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 8.0),
             Center(
               child: Column(
                 children: [
                   const Text(
                     'Username',
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Text(
                     'User Type',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                    ),
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Column(
-                        children: [
-                          Text(
-                            'Followers',
-                            style: TextStyle(
-                              fontSize: 16.0,
+                      const Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Followers',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '100',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              '100',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       const SizedBox(width: 16.0),
                       const Column(
@@ -127,11 +128,11 @@ class MyProfilePage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16.0),
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.edit),
-                    label: const Text('Edit Profile'),
-                  ),
+                  // ElevatedButton.icon(
+                  //   onPressed: () {},
+                  //   icon: const Icon(Icons.edit),
+                  //   label: const Text('Edit Profile'),
+                  // ),
                 ],
               ),
             ),

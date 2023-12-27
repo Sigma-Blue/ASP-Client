@@ -2,6 +2,7 @@ import 'package:ap/Pages/Home/home.dart';
 import 'package:ap/Pages/Addposts/add_post.dart';
 import 'package:ap/Pages/Profile/EditProfile/Edit_Profile.dart';
 import 'package:ap/Pages/Profile/ProfilePage.dart';
+import 'package:ap/Pages/Search/search.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,8 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _children = [
     Home(),
-    // const Search(Username: "Gokulramana", Usertype: "Alumni"),
-    const EditProfile(),
+    const Search(username: "Gokul", usertype: "Alumni"),
     MyProfilePage(),
     const AddPost(),
     MyProfilePage()

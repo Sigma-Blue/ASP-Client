@@ -105,9 +105,11 @@ class _postState extends State<Userpost> {
                   const commentpopup(),
                 ],
               ),
+              Spacer(),
+              Spacer(),
               Expanded(
                   child: Padding(
-                padding: const EdgeInsets.only(left: 170.0, right: 0),
+                padding: const EdgeInsets.only(left: 0, right: 0),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(),
                     onPressed: () {
