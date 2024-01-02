@@ -102,6 +102,7 @@ class ViewPostsPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const SizedBox(height: 8,),
             ListView.builder(
               shrinkWrap: true,
               itemCount: linksList.length,

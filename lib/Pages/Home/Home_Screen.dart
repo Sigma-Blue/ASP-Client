@@ -2,6 +2,7 @@ import 'package:ap/Pages/Home/home.dart';
 import 'package:ap/Pages/Addposts/add_post.dart';
 import 'package:ap/Pages/Profile/EditProfile/Edit_Profile.dart';
 import 'package:ap/Pages/Profile/ProfilePage.dart';
+import 'package:ap/Pages/Search/search.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,9 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _children = [
     Home(),
-    // const Search(Username: "Gokulramana", Usertype: "Alumni"),
-    const EditProfile(),
-    MyProfilePage(),
+    const Search(username: "Gokulramana", usertype: "Alumni"),
     const AddPost(),
     MyProfilePage()
   ];
@@ -37,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'search'),
-          BottomNavigationBarItem(icon: Icon(Icons.file_copy), label: 'files'),
+          // BottomNavigationBarItem(icon: Icon(Icons.file_copy), label: 'files'),
           BottomNavigationBarItem(
               icon: Icon(Icons.add_box_outlined), label: 'addpost'),
           BottomNavigationBarItem(

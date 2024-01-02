@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:ap/Pages/Addposts/drop_down_menu.dart';
+import 'package:ap/Pages/Home/Home_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
@@ -115,7 +116,7 @@ class _AddPostFormState extends State<AddPostForm> {
                   ),
                 const SizedBox(height: 8),
                 Padding(
-                  padding: const EdgeInsets.only(left: 120, right: 120),
+                  padding: const EdgeInsets.only(left: 10, right: 190),
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -141,7 +142,7 @@ class _AddPostFormState extends State<AddPostForm> {
                     children: [
                       Row(children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(left:30.0,right: 20),
                           child: ElevatedButton(
                             onPressed: () => _pickImage(ImageSource.camera),
                             child: const Text('Take a picture'),
@@ -172,7 +173,8 @@ class _AddPostFormState extends State<AddPostForm> {
               padding: const EdgeInsets.only(left: 120, right: 120),
               child: ElevatedButton(
                 onPressed: () {
-                  // Add submit logic here
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => const HomePage()));
                 },
                 child: const Text('Submit'),
               ),

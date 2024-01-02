@@ -9,15 +9,15 @@ class EditProfile extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Edit Profile'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.cancel),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (BuildContext context) => MyProfilePage()));
-              },
-            ),
-          ],
+          // actions: [
+          //   IconButton(
+          //     icon: const Icon(Icons.cancel),
+          //     onPressed: () {
+          //       // Navigator.of(context).pushReplacement(MaterialPageRoute(
+          //       //     builder: (BuildContext context) => MyProfilePage()));
+          //     },
+          //   ),
+          // ],
         ),
         body: const EditProfileForm());
   }
