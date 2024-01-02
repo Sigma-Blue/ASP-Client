@@ -6,6 +6,10 @@ class MyProfilePage extends StatelessWidget {
   final double profileHeight = 124;
   List linksList = [
     'https://github.com/ramana1718',
+    'https://trello.com/b/aiZ6Cfza/sigma-blue',
+    'https://github.com/ramana1718',
+    'https://trello.com/b/aiZ6Cfza/sigma-blue',
+    'https://github.com/ramana1718',
     'https://trello.com/b/aiZ6Cfza/sigma-blue'
   ];
   @override
@@ -54,11 +58,12 @@ class MyProfilePage extends StatelessWidget {
                         TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Center(
-                        child: Column(
+                  Padding(
+                    padding: const EdgeInsets.only(left: 32.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Column(
                           children: [
                             Text(
                               'Followers',
@@ -75,64 +80,67 @@ class MyProfilePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
-                      const SizedBox(width: 16.0),
-                      const Column(
-                        children: [
-                          Text(
-                            'Following',
-                            style: TextStyle(
-                              fontSize: 16.0,
+                        const SizedBox(width: 16.0),
+                        const Column(
+                          children: [
+                            Text(
+                              'Following',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '50',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              '50',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(width: 16.0),
-                      const Column(
-                        children: [
-                          Text(
-                            'Posts',
-                            style: TextStyle(
-                              fontSize: 16.0,
+                          ],
+                        ),
+                        const SizedBox(width: 16.0),
+                        const Column(
+                          children: [
+                            Text(
+                              'Posts',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '200',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              '200',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Column(
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const EditProfile()));
+                                  },
+                                  icon: Icon(Icons.edit))
+                            ],
                           ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const EditProfile()));
-                              },
-                              icon: Icon(Icons.edit))
-                        ],
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 16.0),
+                  // const SizedBox(height: 16.0),
                   // ElevatedButton.icon(
                   //   onPressed: () {},
                   //   icon: const Icon(Icons.edit),
                   //   label: const Text('Edit Profile'),
-                  // ),
+                  //   ),
                 ],
               ),
             ),
@@ -155,24 +163,30 @@ class MyProfilePage extends StatelessWidget {
                       children: [
                         // About Tab
                         Center(
-                          child: Text('Detailed about of the user goes here'),
+                          child: Text(
+                            'Detailed about of the user goes here',
+                            style: TextStyle(fontSize: 16),
+                          ),
                         ),
 
                         // Skills Tab
                         Center(
-                          child: Text('Skills: Flutter, Dart, UI/UX Design'),
+                          child: Text('Skills: Flutter, Dart, UI/UX Design',
+                              style: TextStyle(fontSize: 16)),
                         ),
 
                         // Experience Tab
                         Center(
                           child: Text(
-                              'Job: Software Developer\nDescription: Developing awesome Flutter apps'),
+                              'Job: Software Developer\nDescription: Developing awesome Flutter apps',
+                              style: TextStyle(fontSize: 16)),
                         ),
 
                         // Education Tab
                         Center(
                           child: Text(
-                              'School/College: XYZ School\nQualification: Bachelor\'s Degree in Computer Science'),
+                              'School/College: XYZ School\nQualification: Bachelor\'s Degree in Computer Science',
+                              style: TextStyle(fontSize: 16)),
                         ),
                       ],
                     ),
@@ -181,7 +195,8 @@ class MyProfilePage extends StatelessWidget {
               ),
             ),
             // Links Section
-            const Center(
+            const Padding(
+              padding: EdgeInsets.only(left: 15, bottom: 8),
               child: Text(
                 'Links:',
                 style: TextStyle(
@@ -190,12 +205,18 @@ class MyProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: linksList.length,
-              itemBuilder: (context, index) {
-                return Text(linksList[index]);
-              },
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: linksList.length,
+                itemBuilder: (context, index) {
+                  return Text(
+                    linksList[index],
+                    style: TextStyle(color: Colors.blue),
+                  );
+                },
+              ),
             ),
           ],
         ),

@@ -282,7 +282,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 FormHelper.showSimpleAlertDialog(
                   context,
                   Config.appName,
-                  "User Doesn't Exist",
+                  "UserName or Password Incorrect",
                   "OK",
                   () => {Navigator.pop(context)},
                 );

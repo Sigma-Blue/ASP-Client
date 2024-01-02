@@ -1,4 +1,5 @@
 import 'package:ap/Pages/Home/popup.dart';
+import 'package:ap/Pages/Home/view_post.dart';
 import 'package:ap/Pages/Profile/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
@@ -57,17 +58,29 @@ class _postState extends State<Userpost> {
         ),
         Padding(
           padding: const EdgeInsets.all(0),
-          child: Container(
-            width: double.infinity,
-            height: 200.0,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-            ),
-            child: Image.asset(
-              'assets/images/coverpicture.png',
-              fit: BoxFit.cover,
-            ),
-          ),
+          child: GestureDetector(
+              child: Container(
+                width: double.infinity,
+                height: 200.0,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                ),
+                child: Image.asset(
+                  'assets/images/coverpicture.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ViewPostsPage(
+                            username: 'Gokul',
+                            description:
+                                "This is the view post page of the alumni student platform this is a small description of the post",
+                            about:
+                                '"This is the view post page of the alumni student platform this is a small description of the post. "This is the view post page of the alumni student platform this is a small description of the post. "This is the view post page of the alumni student platform this is a small description of the post"This is the view post page of the alumni student platform this is a small description of the post"This is the view post page of the alumni student platform this is a small description of the post"This is the view post page of the alumni student platform this is a small description of the post"This is the view post page of the alumni student platform this is a small description of the post')));
+              }),
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -109,7 +122,7 @@ class _postState extends State<Userpost> {
               Spacer(),
               Expanded(
                   child: Padding(
-                padding: const EdgeInsets.only(left: 0, right: 0),
+                padding: const EdgeInsets.only(left: 170.0, right: 0),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(),
                     onPressed: () {
