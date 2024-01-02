@@ -1,5 +1,5 @@
 import 'package:ap/Pages/Addposts/add_post_form.dart';
-import 'package:ap/Pages/Home/home_screen.dart';
+// import 'package:ap/Pages/Home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class AddPost extends StatelessWidget {
@@ -13,8 +13,8 @@ class AddPost extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.cancel),
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext context) => const HomePage()));
+              // Navigator.of(context).pushReplacement(MaterialPageRoute(
+              //     builder: (BuildContext context) => const HomePage()));
             },
           ),
         ],

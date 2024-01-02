@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:ap/Pages/Addposts/drop_down_menu.dart';
-import 'package:ap/Pages/Home/Home_Screen.dart';
+import 'package:ap/Pages/Home/home_page.dart';
+// import 'package:ap/Pages/Home/Home_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
@@ -142,7 +143,7 @@ class _AddPostFormState extends State<AddPostForm> {
                     children: [
                       Row(children: [
                         Padding(
-                          padding: const EdgeInsets.only(left:30.0,right: 20),
+                          padding: const EdgeInsets.only(left: 30.0, right: 20),
                           child: ElevatedButton(
                             onPressed: () => _pickImage(ImageSource.camera),
                             child: const Text('Take a picture'),
