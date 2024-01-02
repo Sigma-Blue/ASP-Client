@@ -2,15 +2,28 @@
 
 A new Flutter project.
 
-## Getting Started
+# Alumni Student Platform
 
-This project is a starting point for a Flutter application.
+Welcome to the Alumni Student Platform, a Flutter-based application that connects students with alumni, facilitating collaboration, knowledge sharing, and networking in the domains of jobs, internships, research, and projects.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- User Authentication:
+  - Users can register and log in securely.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Profile Management:
+  - Users can create and update their profiles.
+  - Profiles include sections for personal details, experiences, skills, and work information.
+
+- Post Creation and Interaction:
+  - Users can create posts to share updates, achievements, or queries in the domains of jobs, internships, research, and projects.
+  - Posts support features like liking, commenting, and saving.
+  
+- Experience and Skills:
+  - Users can add and update their professional experiences and skills in their profiles.
+
+- Search Functionality:
+  - Users can search for other profiles, posts.
+ 
+- Domains:
+  - The basic four domains of the application are job, intern, research and project.
